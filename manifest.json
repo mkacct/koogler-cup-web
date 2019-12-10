@@ -1,0 +1,22 @@
+{
+	"name": "Koogler Cup Standings",
+	"short_name": "Koogler Cup",
+	"dir": "ltr",
+	"lang": "en-US",
+	"display": "standalone",
+	"scope": "/",
+	"start_url": "/index.html",
+	"categories": ["education"],
+	"background_color": "#181818",
+	"theme_color": "#ff9800",
+	"icons": [
+		{
+			"src": "/android-chrome-192x192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		}
+	],
+	"serviceworker": {
+		"src": "serviceWorker.js"
+	}
+}

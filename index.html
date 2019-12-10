@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Koogler Cup Standings</title>
+		<!-- favicons -->
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<!-- pwa/mobile -->
+		<link rel="manifest" href="manifest.json">
+		<meta name="theme-color" content="#ff9800">
+		<!-- style -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+		<link href="res/fontAwesome/css/fontawesome.css" rel="stylesheet">
+		<link href="res/fontAwesome/css/solid.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<link href="css/index.css" rel="stylesheet">
+		<!-- script -->
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+		<script src="js/watchForHover.js"></script>
+		<script src="config.js"></script>
+		<script src="js/global.js"></script>
+		<script src="js/house.js"></script>
+		<script src="js/index.js"></script>
+		<script src="js/extra.js"></script>
+	</head>
+	<body>
+		<div id="outside">
+			<header>
+				<div><img src="res/logo.png" id="logo" alt="App logo icon" /></div>
+				<div id="status" data-status="none"></div>
+				<div><button class="roundButton installButton" name="Install web app" style="display: none;"><i class="fas fa-arrow-alt-circle-down"></i></button></div>
+				<div><button id="menuButton" class="roundButton" name="Menu"><i class="fas fa-ellipsis-h"></i></button></div>
+			</header>
+			<h1>Koogler Cup Standings</h1>
+			<noscript><div style="text-align: center;">Please enable JavaScript and reload</div></noscript>
+			<div id="noContentDesc"></div>
+			<div id="scoreboardContainer"></div>
+			<h2 id="eventsHeading"></h2>
+			<div id="events"></div>
+		</div>
+		<div id="modalShade"></div>
+		<div class="modal" id="menuModal">
+			<div class="modalContent">
+				<div class="modalNav">
+					<button class="roundButton" id="creditsBackButton" href="javascript:void(0)" name="Back"><i class="fas fa-arrow-left"></i></button>
+					<div style="flex-grow: 1;"></div>
+					<button class="modalClose roundButton" href="javascript:void(0)" name="Close"><i class="fas fa-times"></i></button>
+				</div>
+				<div id="notCredits">
+					<div class="menuCategory" id="installDesc" style="display: none;">
+						<h3>Install web app</h3>
+						<p>You can add this site to your device as an app.</p>
+						<button class="installButton"><i class="fas fa-arrow-alt-circle-down"></i>Install</button>
+					</div>
+					<div class="menuCategory">
+						<h3>Twitter</h3>
+						<p>To receive notifications when event results are added, follow the <a href="https://twitter.com/HayesKooglerCup" target="_blank">Twitter account</a> and turn on account notifications.</p>
+					</div>
+					<div class="menuCategory buttonRow" style="margin-bottom: 1em"><button id="feedbackButton">Send feedback</button><button id="updateNotesButton">Show update notes</button><button id="creditsButton">Show credits</button></div>
+					<div class="centeredDot" style="margin-top: 1em;"></div>
+				</div>
+				<img src="res/cred.png" style="display: block; margin: 1em auto; width: 2em;" alt="Credit icon" />
+				<div id="credits">
+					<div class="centeredDot"></div>
+					<p style="text-align: center;">Created by Sam K.<br />
+					Service managed by Mr. Lamb</p>
+				</div>
+				<p style="text-align: center; margin: 0;">version <span class="versionNumber"><span></p>
+			</div>
+		</div>
+		<div class="modal" id="updateNotesModal">
+			<div class="modalContent">
+				<div class="modalNav">
+					<button class="modalClose roundButton" href="javascript:void(0)" name="Close"><i class="fas fa-times"></i></button>
+				</div>
+				<h3>Update notes</h3>
+				<p>You'll be able to view update notes here.</p>
+				<p style="text-align: center; margin: 0;">version <span class="versionNumber"><span></p>
+			</div>
+		</div>
+		<!-- <div class="modal" id="closeAppModal">
+			<div class="modalContent">
+				<h3>Close app?</h3>
+				<div class="buttonRow" style="text-align: right;"><button class="modalClose">Cancel</button><button id="closeAppButton">Close</button></div>
+			</div>
+		</div> -->
+	</body>
+</html>

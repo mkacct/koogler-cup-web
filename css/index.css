@@ -1,0 +1,56 @@
+#noContentDesc, table, .event a, #notCredits {
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+#status {
+	flex-grow: 1;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+#status i.fa-circle {transform: scale(0.8);}
+
+h1, h2 {text-align: center;}
+
+.errorMessage {color: red;}
+
+#noContentDesc {text-align: center;}
+
+.placeCell {font-weight: bold;}
+.houseCell {width: 100%;}
+.scoreCell {text-align: right;}
+
+#eventsHeading div {margin-top: 2em;}
+.nothingText {color: gray}
+
+#events {margin-bottom: 1em;}
+
+.event {
+	background-color: #282828;
+	padding: 1em;
+	margin-top: 1em;
+}
+
+.eventTitle {font-size: 1.2em}
+
+.event ul {
+	padding: 0;
+	list-style: none;
+}
+
+#credits {display: none;}
+
+.centeredDot {
+	margin: 0 auto;
+	width: 5px;
+	height: 5px;
+	background-color: dimgray;
+	border-radius: 50%;
+}
+
+@media screen and (min-width: 481px) {
+	.event {border-radius: 1em}
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Koogler Cup Standings (offline)</title>
+		<!-- favicons -->
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<!-- pwa/mobile -->
+		<link rel="manifest" href="manifest.json">
+		<meta name="theme-color" content="#ff9800">
+	</head>
+	<body>
+		<div id="outside" style="text-align: center;">
+			<h2>You are offline</h2>
+			<button onclick="window.location = 'index.html';">Retry</button>
+		</div>
+	</body>
+</html>
+<style>
+/* all css required for offline.html, because i don't understand service workers */
+
+body {
+	font-family: 'Roboto', sans-serif;
+	background-color: #181818;
+	color: white;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+@media all and (display-mode: standalone) {
+	html {
+		overscroll-behavior: contain;
+	}
+	
+	body {
+		-webkit-tap-highlight-color: transparent;
+		-webkit-touch-callout: none;
+	}
+}
+
+@media screen and (min-width: 481px) {
+	#outside {margin: 0 10%;}
+}
+
+@media screen and (min-width: 1024px) {
+	#outside {margin: 0 25%;}
+}
+
+button {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
+	padding: 0.5em 1em;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	border-radius: 1em;
+}
+
+button:focus {background-color: rgba(255, 255, 255, 0.15);}
+</style>

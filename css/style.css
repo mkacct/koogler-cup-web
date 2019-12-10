@@ -1,0 +1,167 @@
+body {
+	font-family: 'Roboto', sans-serif;
+	background-color: #181818;
+	color: white;
+}
+
+@media all and (display-mode: standalone) {
+	html {
+		overscroll-behavior: contain;
+	}
+	
+	body {
+		-webkit-tap-highlight-color: transparent;
+		-webkit-touch-callout: none;
+	}
+}
+
+header, h1, h2, h3, button, img, .toast {
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+@keyframes blink {
+	from {visibility: visible;}
+	to {visibility: hidden;}
+}
+
+.blink {animation: blink 0.5s steps(2, start) infinite;}
+
+header {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	display: flex;
+	background-color: rgba(56, 56, 56, 0.95);
+	padding: 0.5em 1em;
+}
+
+header div {
+	padding: 0 0.25em;
+	line-height: 2.5em;
+	white-space: nowrap;
+}
+
+header div:first-child {padding-left: 0;}
+header div:last-child {padding-right: 0;}
+
+#logo {
+	display: block;
+	width: 2.5em;
+}
+
+button {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
+	padding: 0.5em 1em;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	border-radius: 1em;
+	transition: background-color 0.25s;
+}
+
+body.hasHover button:hover, button:focus {background-color: rgba(255, 255, 255, 0.15);}
+body.hasHover button:active {background-color: rgba(255, 255, 255, 0.3);}
+
+button:not(.roundButton) i {margin-right: 0.5em;}
+
+.roundButton {
+	padding: 0.5em;
+	border-style: none;
+	border-radius: 50%;
+	height: 2.5em;
+	width: 2.5em;
+	line-height: 1;
+	vertical-align: top;
+}
+
+table {
+	border-collapse: collapse;
+	margin-top: 1em;
+}
+
+td {
+	padding: 1em;
+	background-color: inherit;
+}
+
+a {
+	color: dodgerblue;
+	text-decoration: none;
+}
+
+body.hasHover a:hover {text-decoration: underline;}
+
+#modalShade {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	top: 50%;
+	width: 100%;
+	transform: translate(0, -50%);
+	z-index: 3;
+	background: #282828;
+	max-height: 100%;
+	overflow: auto;
+}
+
+.modalNav {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.modalContent {padding: 1em;}
+
+.toast {
+	display: none;
+	position: fixed;
+	bottom: 1em;
+	width: calc(100% - 4em);
+	padding: 1em;
+	margin: 1em 0;
+	left: 50%;
+	transform: translate(-50%, 0);
+	z-index: 4;
+	text-align: center;
+	background-color: rgb(80, 80, 80, 0.95);
+	border-radius: 1em;
+}
+
+.menuCategory {margin: 1em 0 2em;}
+
+.buttonRow button {margin: 0 1em 1em 0;}
+.buttonRow button:last-child {margin-right: 0;}
+
+@media screen and (min-width: 481px) {
+	header {
+		border-radius: 0 0 1em 1em;
+	}
+	
+	tr:first-child td:first-child {border-top-left-radius: 1em;}
+	tr:first-child td:last-child {border-top-right-radius: 1em;}
+	tr:last-child td:first-child {border-bottom-left-radius: 1em;}
+	tr:last-child td:last-child {border-bottom-right-radius: 1em;}
+	
+	#outside, .modalContent {margin: 0 10%;}
+	.toast {width: calc(80% - 4em);}
+}
+
+@media screen and (min-width: 1024px) {
+	#outside, .modalContent {margin: 0 25%;}
+	.toast {width: calc(50% - 4em);}
+}
