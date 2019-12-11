@@ -29,6 +29,8 @@ const filesToCache = [
 	'/favicon.ico',
 	'/android-chrome-192x192.png',
 	'/android-chrome-512x512.png',
+	'/maskable-192x192.png',
+	'/maskable-512x512.png',
 	'/apple-touch-icon.png',
 	'/browserconfig.xml',
 	'/mstile-150x150.png',
