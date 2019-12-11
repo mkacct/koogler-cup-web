@@ -22,13 +22,6 @@ header, h1, h2, h3, button, img, .toast {
 	-ms-user-select: none;
 }
 
-@keyframes blink {
-	from {visibility: visible;}
-	to {visibility: hidden;}
-}
-
-.blink {animation: blink 0.5s steps(2, start) infinite;}
-
 header {
 	position: sticky;
 	top: 0;
@@ -60,15 +53,16 @@ button {
 	outline: none;
 	color: inherit;
 	font: inherit;
-	cursor: pointer;
 	padding: 0.5em 1em;
 	border: 1px solid rgba(255, 255, 255, 0.3);
 	border-radius: 1em;
 	transition: background-color 0.25s;
 }
 
-body.hasHover button:hover, button:focus {background-color: rgba(255, 255, 255, 0.15);}
-body.hasHover button:active {background-color: rgba(255, 255, 255, 0.3);}
+button:not([disabled]) {cursor: pointer;}
+
+body.hasHover button:not([disabled]):hover, button:focus {background-color: rgba(255, 255, 255, 0.15);}
+body.hasHover button:not([disabled]):active {background-color: rgba(255, 255, 255, 0.3);}
 
 button:not(.roundButton) i {margin-right: 0.5em;}
 

@@ -58,15 +58,15 @@ function closeModal(callback) {
 	if (typeof callback == 'function') {setTimeout(callback, uiAnimTime);}
 }
 
-function toast(message) {
+function toast(message, toastTime) {
 	if ($('.toast').length > 0) {
 		$('.toast').remove();
 	}
 	let popup = $('<div></div>').text(message).addClass('toast');
 	$('body').append(popup);
-	popup.fadeIn(uiAnimTime, function() {
+	popup.fadeIn(animTime, function() {
 		setTimeout(function() {
-			popup.fadeOut(uiAnimTime, function() {
+			popup.fadeOut(animTime, function() {
 				popup.remove();
 			});
 		}, toastTime);

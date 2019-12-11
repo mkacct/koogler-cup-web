@@ -46,7 +46,7 @@ $(document).ready(function() {
 				closeModal();
 			} else {
 				//openModal('#closeAppModal');
-				toast('Unfortunately, you can\'t close the app this way.');
+				toast('Unfortunately, you can\'t close the app this way.', 3000);
 			}
 		});
 		window.history.pushState({}, '');
@@ -57,6 +57,11 @@ $(document).ready(function() {
 		});
 		*/
 	}
+	// to reload by button
+	$('#updateButton').on('click', function(e) {
+		clearTimeout(updateTimeout);
+		update();
+	});
 	// to show the install prompt (pwa)
 	$('.installButton').on('click', function(e) {
 		installPrompt.prompt();
@@ -116,11 +121,12 @@ $(document).ready(function() {
 	localStorage.setItem('updateNotesVersion', updateNotesVersion);
 	
 	// start getting data
-	$('#noContentDesc').html('Starting<span class="blink">…</span>');
+	$('#noContentDesc').html('Loading…');
 	update();
 });
 
 function update() {
+	setUpdateButton('updating');
 	// get data from google sheets
 	getData(function(data) { // success
 		//console.dir(data);
@@ -208,6 +214,7 @@ function update() {
 			updateVisuals(visuals);
 		}
 		prevData = data;
+		clearTimeout(updateTimeout);
 		updateTimeout = setTimeout(update, updateTime);
 	}, function(reqStatus, err) { // error
 		updateVisuals({
@@ -216,13 +223,14 @@ function update() {
 			showEls: prevShowEls
 		});
 		prevData = {type: 'error'};
+		clearTimeout(updateTimeout);
 		updateTimeout = setTimeout(update, updateTime);
 	});
 }
 
 /* obj:
 	{
-		status: string,
+		status: string ('live', 'error', 'disabled'),
 		errorText: string,
 		showEls: boolean,
 		scoreboard: jquery,
@@ -234,23 +242,13 @@ function update() {
 */
 function updateVisuals(obj) {
 	// status
-	if (obj.status != $('#status').attr('data-status') || (obj.status == 'error' && obj.errorText != $('#errorText').text())) {
-		fadeChange($('#status'), function(it) {
-			it.empty().removeClass();
-			it.attr('data-status', obj.status);
-			if (obj.status == 'error') {
-				it.addClass('errorMessage').html('<i class="fas fa-exclamation-triangle"></i> ');
-				let errorText = $('<span></span>').attr('id', 'errorText').text(obj.errorText);
-				it.append(errorText);
-			} else if (obj.status == 'live') {
-				it.html('<i class="fas fa-circle"></i> LIVE');
-			} else if (obj.status == 'disabled') {
-				it.text('Display disabled');
-			}
-		});
-	} else if (obj.status == 'live') {
-		fadeChange($('#status i.fa-circle'), function(it) {/* don't actually do anything */});
+	if (obj.status == 'error') {
+		setUpdateButton('error');
+		toast(obj.errorText, 5000);
+	} else {
+		setUpdateButton('complete');
 	}
+	setTimeout(function() {setUpdateButton('off');}, 5000);
 	// display els
 	if (obj.showEls) {
 		prevShowEls = true;
@@ -290,7 +288,7 @@ function updateVisuals(obj) {
 		fadeChange($('#eventsHeading'), function(it) {it.empty();});
 		fadeChange($('#events'), function(it) {it.empty();});
 		if (obj.status == 'error') { // special case with error message
-			changeNoContentDesc('Request failed, it will retry shortly…');
+			changeNoContentDesc('Request failed, click <i class="fas fa-redo-alt"></i> to retry');
 		} else {
 			// assuming it is because of disabled, since that's the only reason i have to remove content for now
 			changeNoContentDesc('You cannot view the data at this time.');
@@ -298,9 +296,26 @@ function updateVisuals(obj) {
 	}
 }
 
+// states: 'off', 'waiting', 'complete', 'error'
+function setUpdateButton(state) {
+	if (state == 'off') {
+		$('#updateButton').attr('disabled', false);
+		$('#updateButton').html('<i class="fas fa-redo-alt"></i>');
+	} else {
+		$('#updateButton').attr('disabled', true);
+		if (state == 'complete') {
+			$('#updateButton').html('<i class="fas fa-check"></i>');
+		} else if (state == 'error') {
+			$('#updateButton').html('<i class="fas fa-exclamation-triangle"></i>');
+		} else {
+			$('#updateButton').html('<i class="fas fa-spinner fa-pulse"></i>');
+		}
+	}
+}
+
 function changeNoContentDesc(newText) {
 	if ($('#noContentDesc').text() != newText) {
-		fadeChange($('#noContentDesc'), function(it) {it.empty().text(newText);});
+		fadeChange($('#noContentDesc'), function(it) {it.empty().html(newText);});
 	}
 }
 
