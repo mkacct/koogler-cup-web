@@ -50,6 +50,8 @@ header div:last-child {padding-right: 0;}
 #logo {
 	display: block;
 	width: 2.5em;
+	box-sizing: border-box;
+	padding: 0.15em;
 }
 
 button {
