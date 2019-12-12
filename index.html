@@ -33,6 +33,7 @@
 		<script src="js/house.js"></script>
 		<script src="js/index.js"></script>
 		<script src="js/extra.js"></script>
+		<script src="js/indexDev.js"></script>
 	</head>
 	<body>
 		<div id="outside">
@@ -71,7 +72,7 @@
 					<div class="menuCategory buttonRow" style="margin-bottom: 1em"><button id="feedbackButton">Send feedback</button><button id="updateNotesButton">Show update notes</button><button id="creditsButton">Show credits</button></div>
 					<div class="centeredDot" style="margin-top: 1em;"></div>
 				</div>
-				<img src="res/cred.png" style="display: block; margin: 1em auto; width: 2em;" alt="Credit icon" />
+				<img src="res/cred.png" id="cred" style="display: block; margin: 1em auto; width: 2em;" alt="Credit icon" />
 				<div id="credits">
 					<div class="centeredDot"></div>
 					<p style="text-align: center;">Created by Sam K.<br />
@@ -96,5 +97,24 @@
 				<div class="buttonRow" style="text-align: right;"><button class="modalClose">Cancel</button><button id="closeAppButton">Close</button></div>
 			</div>
 		</div> -->
+		<div class="modal" id="devModal">
+			<div class="modalContent">
+				<div class="modalNav">
+					<button class="modalClose roundButton" href="javascript:void(0)" name="Close"><i class="fas fa-times"></i></button>
+				</div>
+				<h3>Developer menu</h3>
+					<ul style="overflow-wrap: break-word;">
+						<li>
+							navigator.userAgent<br />
+							<span id="devUA"></span>
+						</li>
+						<li>
+							(display-mode: standalone)<br />
+							<span id="devStandalone"></span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
