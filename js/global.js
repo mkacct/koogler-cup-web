@@ -34,7 +34,7 @@ $(document).ready(function() {
 
 function openModal(selector, callback) {
 	if ($('.modal:visible').length > 0) {
-		closeModal(function() {openModalInternal(selector, callback)});
+		closeModal(function() {openModalInternal(selector, callback)}, true);
 	} else {
 		openModalInternal(selector, callback)
 	}
@@ -49,8 +49,8 @@ function openModalInternal(selector, callback) {
 	if (typeof callback == 'function') {setTimeout(callback, uiAnimTime);}
 }
 
-function closeModal(callback) {
-	$('#modalShade:visible').fadeOut(uiAnimTime);
+function closeModal(callback, noUndim) {
+	if (!noUndim) {$('#modalShade:visible').fadeOut(uiAnimTime);}
 	$('.modal:visible').slideUp(uiAnimTime).animate({opacity: 0}, {
 		queue: false,
 		duration: uiAnimTime
