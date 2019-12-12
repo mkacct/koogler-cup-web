@@ -1,7 +1,7 @@
 'use strict';
 
 const version = '0.1';
-const updateNotesVersion = '1';
+const updateNotesVersion = 1;
 
 const apiKey = 'AIzaSyCljp-6sxk9qo3mjrvzKgVZmu-HzYtgM1c'; // google api key
 const spreadsheetId = '12UgKkow7LXLHgf5v45EsjuPuf_7COerJ7mnLgWdNCbs'; // real data

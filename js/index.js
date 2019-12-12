@@ -114,12 +114,12 @@ $(document).ready(function() {
 	});
 	
 	// show update notes automatically
-	let currentUNV = Number(updateNotesVersion);
-	let storedUNV = lsGet('updateNotesVersion', 0);
+	let currentUNV = updateNotesVersion;
+	let storedUNV = Number(lsGet('updateNotesVersion', 0));
 	if (storedUNV > 0 && currentUNV > storedUNV) {
 		openModal('#updateNotesModal');
 	}
-	localStorage.setItem('updateNotesVersion', updateNotesVersion);
+	lsSet('updateNotesVersion', updateNotesVersion);
 	
 	// start getting data
 	$('#noContentDesc').html('Loading…');

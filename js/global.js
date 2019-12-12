@@ -101,11 +101,16 @@ function splitVer(ver) {
 */
 
 // local storage
+
 function lsGet(key, fallback) {
-	let item = localStorage.getItem(key);
+	let item = localStorage.getItem('kcs-' + key);
 	if (typeof item == 'string') {
 		return item;
 	} else {
-		return fallback;
+		return fallback.toString();
 	}
+}
+
+function lsSet(key, value) {
+	localStorage.setItem('kcs-' + key, value.toString());
 }
