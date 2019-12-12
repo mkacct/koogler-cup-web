@@ -81,6 +81,25 @@ $(document).ready(function() {
 		
 		openModal('#menuModal');
 	});
+	// to show the alpha list
+	$('#alphaListButton').on('click', function(e) {
+		let eventEls = $('.event');
+		if (eventEls.length > 0) {
+			eventEls.sort(function(a, b) {return $(a).children('.eventTitle').text().localeCompare($(b).children('.eventTitle').text());});
+			$('#alphaList').empty();
+			for (let i = 0; i < eventEls.length; i++) {
+				let eventA = $('<a></a>').attr('href', 'javascript:void(0);').text($(eventEls[i]).children('.eventTitle').text());
+				eventA.on('click', function(e) {
+					closeModal();
+					window.scrollTo(0, eventEls[i].offsetTop - $('header').outerHeight() - 16);
+				});
+				$('#alphaList').append($('<li></li>').append(eventA));
+			}
+			openModal('#alphaListModal');
+		} else {
+			toast('No events are visible', 3000)
+		}
+	});
 	// to show the update notes by button
 	$('#updateNotesButton').on('click', function(e) {
 		openModal('#updateNotesModal');
