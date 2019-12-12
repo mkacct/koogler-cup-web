@@ -245,7 +245,7 @@ function updateVisuals(obj) {
 	// status
 	if (obj.status == 'error') {
 		setUpdateButton('error');
-		toast(obj.errorText, 5000);
+		toast('<i class="fas fa-exclamation-triangle"></i> ' + obj.errorText, 5000);
 	} else {
 		setUpdateButton('complete');
 	}

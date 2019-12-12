@@ -62,7 +62,7 @@ function toast(message, toastTime) {
 	if ($('.toast').length > 0) {
 		$('.toast').remove();
 	}
-	let popup = $('<div></div>').text(message).addClass('toast');
+	let popup = $('<div></div>').html(message).addClass('toast');
 	$('body').append(popup);
 	popup.fadeIn(animTime, function() {
 		setTimeout(function() {
