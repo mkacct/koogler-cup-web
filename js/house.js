@@ -73,8 +73,13 @@ function getData(onSuccess, onError) {
 		onSuccess(data);
 	}).fail(function(xhr, status, err) {
 		let errorMessage;
+		console.dir(xhr);
 		if (err.length > 0) {
 			errorMessage = err;
+		} else if (xhr.responseJSON && xhr.responseJSON.error && xhr.responseJSON.error.status) {
+			errorMessage = xhr.responseJSON.error.status;
+		} else if (xhr.status == 0) {
+			errorMessage = 'client error';
 		} else {
 			errorMessage = xhr.status;
 		}
