@@ -10,7 +10,7 @@ let installPrompt = null;
 
 window.addEventListener('beforeinstallprompt', function(e) {
 	installPrompt = e;
-	$('header .installButton').show();
+	$('header .installButton').parent().show();
 	$('#installDesc').show();
 });
 
@@ -20,7 +20,8 @@ function hideInstallOption(installed) {
 	if ($('#installModal:visible')) {
 		closeModal();
 	}
-	$('.installButton').hide();
+	$('header .installButton').parent().hide();
+	$('.installButton').hide(); // not very elegant???
 	if (reason == 'dismissed') {
 		$('#installDesc p').html('Please <a href="index.html">reload the page</a> to install the web app.');
 	} else {
