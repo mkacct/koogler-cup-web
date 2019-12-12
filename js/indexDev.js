@@ -9,7 +9,7 @@ $(document).ready(function() {
 	$('body').on('click', function(e) {
 		if ($(e.target).is($('#cred'))) {
 			devClickCount++;
-			if (devClickCount >= 5) {
+			if (devClickCount >= 4) {
 				devClickCount = 0;
 				if (window.confirm('Open developer menu?')) {openModal('#devModal');}
 			}
