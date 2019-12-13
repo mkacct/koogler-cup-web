@@ -97,7 +97,7 @@ $(document).ready(function() {
 			}
 			openModal('#alphaListModal');
 		} else {
-			toast('No events are visible', 3000)
+			toast('No events are visible; you can\'t use this feature right now', 3000)
 		}
 	});
 	// to show the update notes by button
