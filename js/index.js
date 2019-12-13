@@ -91,7 +91,11 @@ $(document).ready(function() {
 				let eventA = $('<a></a>').attr('href', 'javascript:void(0);').text($(eventEls[i]).children('.eventTitle').text());
 				eventA.on('click', function(e) {
 					closeModal();
-					window.scrollTo(0, eventEls[i].offsetTop - $('header').outerHeight() - 16);
+					if ($(document).has(eventEls[i]).length > 0) { // if event element is in dom
+						window.scrollTo(0, eventEls[i].offsetTop - $('header').outerHeight() - 16);
+					} else {
+						toast('The event was since removed', 3000);
+					}
 				});
 				$('#alphaList').append($('<li></li>').append(eventA));
 			}
