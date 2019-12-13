@@ -85,7 +85,21 @@ $(document).ready(function() {
 	$('#alphaListButton').on('click', function(e) {
 		let eventEls = $('.event');
 		if (eventEls.length > 0) {
-			eventEls.sort(function(a, b) {return $(a).children('.eventTitle').text().localeCompare($(b).children('.eventTitle').text());});
+			eventEls.sort(function(a, b) {
+				let stringA = $(a).children('.eventTitle').text();
+				let stringB = $(b).children('.eventTitle').text();
+				let stringA2 = stringA;
+				let stringB2 = stringB;
+				let prefixes = ['Q1 ', 'Q2 ', 'Q3 ', 'Q4 '];
+				if (prefixes.indexOf(stringA.substr(0, 3)) != -1) {stringA2 = stringA.substr(3);}
+				if (prefixes.indexOf(stringB.substr(0, 3)) != -1) {stringB2 = stringB.substr(3);}
+				let compare = stringA2.localeCompare(stringB2);
+				if (compare != 0) {
+					return compare;
+				} else {
+					return stringA.localeCompare(stringB);
+				}
+			});
 			$('#alphaList').empty();
 			for (let i = 0; i < eventEls.length; i++) {
 				let eventA = $('<a></a>').attr('href', 'javascript:void(0);').text($(eventEls[i]).children('.eventTitle').text());
