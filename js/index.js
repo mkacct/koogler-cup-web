@@ -308,7 +308,7 @@ function updateVisuals(obj) {
 		fadeChange($('#eventsHeading'), function(it) {it.empty();});
 		fadeChange($('#events'), function(it) {it.empty();});
 		if (obj.status == 'error') { // special case with error message
-			changeNoContentDesc('Request failed, click <i class="fas fa-redo-alt"></i> to retry');
+			changeNoContentDesc('Request failed, click the <i class="fas fa-redo-alt"></i> button to retry');
 		} else {
 			// assuming it is because of disabled, since that's the only reason i have to remove content for now
 			changeNoContentDesc('You cannot view the data at this time.');
