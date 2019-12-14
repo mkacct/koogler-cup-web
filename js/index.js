@@ -207,7 +207,7 @@ function update() {
 					row.append($('<td></td>').text(placedScores[i].place).addClass('placeCell'));
 					row.append($('<td></td>').text(placedScores[i].house).addClass('houseCell'));
 					row.append($('<td></td>').append(numberEl(placedScores[i].score, dp)).addClass('scoreCell'));
-					row.css('background-color', houseColors[placedScores[i].house]); // color it with the house color
+					row.children('td').css('background-color', houseColors[placedScores[i].house]); // color it with the house color
 					if (placedScores[i].house == 'Prospect Hill') {row.css('color', 'black');} // make prospect hill readable
 					visuals.scoreboard.append(row);
 				}
