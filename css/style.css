@@ -76,6 +76,8 @@ button:not(.roundButton) i {margin-right: 0.5em;}
 	vertical-align: top;
 }
 
+.hidden {display: none;}
+
 table {
 	border-collapse: collapse;
 	margin-top: 1em;

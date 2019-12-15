@@ -44,6 +44,12 @@ $(document).ready(function() {
 });
 
 function openModal(selector, callback) {
+	// close any expandables in modal
+	$(selector).find('.expandLink').each(function() {
+		$(this).html('<i class="fas fa-chevron-down"></i> ' + $(this).attr('data-default-text'));
+	});
+	$(selector).find('.hidden').hide();
+	
 	if ($('.modal:visible').length > 0) {
 		closeModal(function() {openModalInternal(selector, callback)}, true);
 	} else {

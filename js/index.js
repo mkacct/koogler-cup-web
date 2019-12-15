@@ -217,7 +217,7 @@ function update() {
 					event.append(eventTitle);
 					let evtPlacedScores = placeScores(newEvents[i].scores);
 					let placeList = $('<ul></ul>');
-					let hiddenPlaces = $('<div></div>').hide().addClass('hidden');
+					let hiddenPlaces = $('<div></div>').addClass('hidden');
 					for (let i = 0; i < 8; i++) {
 						let li = $('<li></li>').text(' ' + evtPlacedScores[i].house + ' (+' + evtPlacedScores[i].score + ')').css('color', houseColors[evtPlacedScores[i].house]);
 						li.prepend($('<b></b>').text(evtPlacedScores[i].place + '.')); // the bold part before
