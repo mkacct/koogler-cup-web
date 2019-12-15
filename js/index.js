@@ -138,17 +138,6 @@ $(document).ready(function() {
 		$('#notCredits').slideDown(uiAnimTime);
 		$('#creditsBackButton').fadeOut(uiAnimTime);
 	});
-	// detect clicking expand button
-	$('#events').on('click', '.expandLink', function(e) {
-		let hiddenPlaces = $(this).parents('.event').find('.hiddenPlaces');
-		if (hiddenPlaces.is(':visible')) {
-			hiddenPlaces.slideUp(uiAnimTime);
-			$(this).html('<i class="fas fa-chevron-down"></i> Show all');
-		} else {
-			hiddenPlaces.slideDown(uiAnimTime);
-			$(this).html('<i class="fas fa-chevron-up"></i> Collapse');
-		}
-	});
 	
 	// show update notes automatically
 	let currentUNV = updateNotesVersion;
@@ -228,7 +217,7 @@ function update() {
 					event.append(eventTitle);
 					let evtPlacedScores = placeScores(newEvents[i].scores);
 					let placeList = $('<ul></ul>');
-					let hiddenPlaces = $('<div></div>').hide().addClass('hiddenPlaces');
+					let hiddenPlaces = $('<div></div>').hide().addClass('hidden');
 					for (let i = 0; i < 8; i++) {
 						let li = $('<li></li>').text(' ' + evtPlacedScores[i].house + ' (+' + evtPlacedScores[i].score + ')').css('color', houseColors[evtPlacedScores[i].house]);
 						li.prepend($('<b></b>').text(evtPlacedScores[i].place + '.')); // the bold part before
@@ -241,7 +230,7 @@ function update() {
 					placeList.append(hiddenPlaces);
 					event.append(placeList);
 					if (hiddenPlaces.children().length > 0) {
-						let expandLink = $('<div></div>').append($('<a href="javascript:void(0)"></a>').html('<i class="fas fa-chevron-down"></i> Show all').addClass('expandLink'));
+						let expandLink = $('<div></div>').append(generateExpandLink('Show all', 'Collapse', '.event'));
 						event.append(expandLink);
 					}
 					visuals.events.push(event);

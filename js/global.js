@@ -30,6 +30,17 @@ $(document).ready(function() {
 	$('body').on('click', '.toast', function(e) {
 		$(this).remove();
 	});
+	// use expand links
+	$('body').on('click', '.expandLink', function(e) {
+		let hidden = $(this).parents($(this).attr('data-container-selector')).find('.hidden');
+		if (hidden.is(':visible')) {
+			hidden.slideUp(uiAnimTime);
+			$(this).html('<i class="fas fa-chevron-down"></i> ' + $(this).attr('data-default-text'));
+		} else {
+			hidden.slideDown(uiAnimTime);
+			$(this).html('<i class="fas fa-chevron-up"></i> ' + $(this).attr('data-shown-text'));
+		}
+	});
 });
 
 function openModal(selector, callback) {
@@ -73,6 +84,25 @@ function toast(message, toastTime) {
 	});
 }
 
+function generateExpandLink(defaultText, shownText, containerSelector) {
+	return $('<a href="javascript:void(0)"></a>').html('<i class="fas fa-chevron-down"></i> ' + defaultText).addClass('expandLink').attr('data-container-selector', containerSelector).attr('data-default-text', defaultText).attr('data-shown-text', shownText);
+}
+
+// local storage
+
+function lsGet(key, fallback) {
+	let item = localStorage.getItem('kcs-' + key);
+	if (typeof item == 'string') {
+		return item;
+	} else {
+		return fallback.toString();
+	}
+}
+
+function lsSet(key, value) {
+	localStorage.setItem('kcs-' + key, value.toString());
+}
+
 /*
 // if currentVer > storedVer
 function isNewerVer(currentVer, storedVer) {
@@ -99,18 +129,3 @@ function splitVer(ver) {
 	return verArr;
 }
 */
-
-// local storage
-
-function lsGet(key, fallback) {
-	let item = localStorage.getItem('kcs-' + key);
-	if (typeof item == 'string') {
-		return item;
-	} else {
-		return fallback.toString();
-	}
-}
-
-function lsSet(key, value) {
-	localStorage.setItem('kcs-' + key, value.toString());
-}
