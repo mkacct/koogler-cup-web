@@ -113,7 +113,7 @@ body.hasHover a:hover {text-decoration: underline;}
 	width: 100%;
 	transform: translate(0, -50%);
 	z-index: 3;
-	background: #282828;
+	background-color: #282828;
 	max-height: 100%;
 	overflow: auto;
 }
