@@ -15,7 +15,7 @@ body {
 	}
 }
 
-header, h1, h2, h3, button, img, .toast {
+header, h1, h2, h3, button, img, .toast, .expandLink {
 	user-select: none;
 	-moz-user-select: none;
 	-webkit-user-select: none;
