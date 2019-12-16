@@ -213,8 +213,7 @@ function update() {
 				visuals.events = []; // array of jq objects
 				for (let i = 0; i < newEvents.length; i++) { // for each of the new events, create its html element
 					let event = $('<div></div>').addClass('event');
-					let eventTitle = $('<div></div>').text(newEvents[i].name).addClass('eventTitle');
-					event.append(eventTitle);
+					event.append($('<div></div>').text(newEvents[i].name).addClass('eventTitle'));
 					let evtPlacedScores = placeScores(newEvents[i].scores);
 					let placeList = $('<ul></ul>');
 					let hiddenPlaces = $('<div></div>').addClass('hidden');
