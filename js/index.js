@@ -10,23 +10,23 @@ let installPrompt = null;
 
 window.addEventListener('beforeinstallprompt', function(e) {
 	installPrompt = e;
-	$('header .installButton').parent().show();
-	$('#installDesc').show();
+	$('#installButton').parent().show();
 });
 
 window.addEventListener('appinstalled', function(e) {hideInstallOption(true)});
 
 function hideInstallOption(installed) {
+	if (installed) {$('#installButton').parent().hide();}
 	if ($('#installModal:visible')) {
-		closeModal();
-	}
-	$('header .installButton').parent().hide();
-	$('.installButton').hide(); // not very elegant???
-	if (reason == 'dismissed') {
-		$('#installDesc p').html('Please <a href="index.html">reload the page</a> to install the web app.');
+		closeModal(function() {hideInstallOption2(installed);});
 	} else {
-		$('#installDesc').hide();
+		hideInstallOption2(installed);
 	}
+}
+
+function hideInstallOption2(installed) { // the part that may or may not occur after closing the modal
+	$('#installConfirmButton').hide();
+	if (!installed) {$('#installModal p').html('Please <a href="index.html">reload the page</a> to install the web app.');}
 }
 
 // end pwa install stuff
@@ -63,8 +63,12 @@ $(document).ready(function() {
 		clearTimeout(updateTimeout);
 		update();
 	});
+	// to open the install modal
+	$('#installButton').on('click', function(e) {
+		openModal('#installModal');
+	});
 	// to show the install prompt (pwa)
-	$('.installButton').on('click', function(e) {
+	$('#installConfirmButton').on('click', function(e) {
 		installPrompt.prompt();
 		hideInstallOption(false);
 		installPrompt.userChoice.then(function(choice) {

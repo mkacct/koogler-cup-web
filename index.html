@@ -42,7 +42,7 @@
 				<div style="flex-grow: 1;"></div>
 				<div><button class="roundButton" id="updateButton" name="Refresh" disabled></button></div>
 				<div><button class="roundButton" id="alphaListButton" name="Alphabetical list"><i class="fas fa-list-ul"></i></button></div>
-				<div style="display: none;"><button class="roundButton installButton" name="Install web app"><i class="fas fa-arrow-alt-circle-down"></i></button></div>
+				<div style="display: none;"><button class="roundButton" id="installButton" name="Install web app"><i class="fas fa-arrow-alt-circle-down"></i></button></div>
 				<div><button id="menuButton" class="roundButton" name="Menu"><i class="fas fa-ellipsis-h"></i></button></div>
 			</header>
 			<h1>Koogler Cup Standings</h1>
@@ -61,11 +61,6 @@
 					<button class="modalClose roundButton" href="javascript:void(0)" name="Close"><i class="fas fa-times"></i></button>
 				</div>
 				<div id="notCredits">
-					<div class="menuCategory" id="installDesc" style="display: none;">
-						<h3>Install web app</h3>
-						<p>You can add this site to your device as an app.</p>
-						<button class="installButton"><i class="fas fa-arrow-alt-circle-down"></i>Install</button>
-					</div>
 					<div class="menuCategory">
 						<h3>Twitter</h3>
 						<p>To receive notifications when event results are added, follow the <a href="https://twitter.com/HayesKooglerCup" target="_blank">Twitter account</a> and turn on account notifications.</p>
@@ -80,6 +75,16 @@
 					Service managed by Mr. Lamb</p>
 				</div>
 				<p style="text-align: center; margin: 0;">version <span class="versionNumber"><span></p>
+			</div>
+		</div>
+		<div class="modal" id="installModal">
+			<div class="modalContent">
+				<div class="modalNav">
+					<button class="modalClose roundButton" href="javascript:void(0)" name="Close"><i class="fas fa-times"></i></button>
+				</div>
+				<h3>Install web app</h3>
+				<p>You can add this site to your device as an app.</p>
+				<button id="installConfirmButton" style="margin-bottom: 1em;">Install</button>
 			</div>
 		</div>
 		<div class="modal" id="alphaListModal">
