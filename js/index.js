@@ -139,13 +139,31 @@ $(document).ready(function() {
 		$('#creditsBackButton').fadeOut(uiAnimTime);
 	});
 	
-	// show update notes automatically
-	let currentUNV = updateNotesVersion;
-	let storedUNV = Number(lsGet('updateNotesVersion', 0));
-	if (storedUNV > 0 && currentUNV > storedUNV) {
-		openModal('#updateNotesModal');
+	// update notes stuff
+	if (updateNotes.length > 0) {
+		// place update notes
+		if (updateNotes.length > 1) {$('#prevUpdates').empty();}
+		for (let i = 0; i < updateNotes.length; i++) {
+			let el = $('<p></p>');
+			el.text(' – ' + updateNotes[i].text);
+			el.prepend($('<b></b>').text(updateNotes[i].version));
+			if (i == updateNotes.length - 1) {
+				$('#currentUpdate').replaceWith(el);
+			} else {
+				$('#prevUpdates').prepend(el);
+			}
+		}
+		
+		// check version and show update notes accordingly
+		let prevUN = lsGet('prevUN', 'new'); // 'new' as in they're a new user
+		let currUN = updateNotes[updateNotes.length - 1].version;
+		if (prevUN != 'new' && isNewerVer(currUN, prevUN)) {
+			openModal('#updateNotesModal');
+		}
+		lsSet('prevUN', currUN);
+	} else {
+		lsSet('prevUN', '0'); // start at 0 so that they're sure to get the first update note
 	}
-	lsSet('updateNotesVersion', updateNotesVersion);
 	
 	// start getting data
 	$('#noContentDesc').html('Loading…');

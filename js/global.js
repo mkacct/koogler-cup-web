@@ -109,7 +109,6 @@ function lsSet(key, value) {
 	localStorage.setItem('kcs_' + key, value.toString());
 }
 
-/*
 // if currentVer > storedVer
 function isNewerVer(currentVer, storedVer) {
 	let currentArr = splitVer(currentVer);
@@ -134,4 +133,3 @@ function splitVer(ver) {
 	});
 	return verArr;
 }
-*/
