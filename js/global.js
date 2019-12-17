@@ -97,7 +97,7 @@ function generateExpandLink(defaultText, shownText, containerSelector) {
 // local storage
 
 function lsGet(key, fallback) {
-	let item = localStorage.getItem('kcs-' + key);
+	let item = localStorage.getItem('kcs_' + key);
 	if (typeof item == 'string') {
 		return item;
 	} else {
@@ -106,7 +106,7 @@ function lsGet(key, fallback) {
 }
 
 function lsSet(key, value) {
-	localStorage.setItem('kcs-' + key, value.toString());
+	localStorage.setItem('kcs_' + key, value.toString());
 }
 
 /*
