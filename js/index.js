@@ -16,7 +16,10 @@ window.addEventListener('beforeinstallprompt', function(e) {
 window.addEventListener('appinstalled', function(e) {hideInstallOption(true)});
 
 function hideInstallOption(installed) {
-	if (installed) {$('#installButton').parent().hide();}
+	if (installed) {
+		$('#installButton').parent().hide();
+		logUsage('Feature', 'PWA install');
+	}
 	if ($('#installModal:visible')) {
 		closeModal(function() {hideInstallOption2(installed);});
 	} else {
@@ -114,6 +117,7 @@ $(document).ready(function() {
 					} else {
 						toast('The event was since removed', 3000);
 					}
+					logUsage('Feature', 'Alphabetical list');
 				});
 				$('#alphaList').append($('<li></li>').append(eventA));
 			}
@@ -142,6 +146,10 @@ $(document).ready(function() {
 		$('#notCredits').slideDown(uiAnimTime);
 		$('#creditsBackButton').fadeOut(uiAnimTime);
 	});
+	// to log use of the twitter link
+	$('#twitterLink').on('click', function(e) {
+		logUsage('Feature', 'Twitter link')
+	});
 	
 	// update notes stuff
 	if (updateNotes.length > 0) {
@@ -168,6 +176,8 @@ $(document).ready(function() {
 	} else {
 		lsSet('prevUN', '0'); // start at 0 so that they're sure to get the first update note
 	}
+	
+	logUsage('Open', 'index');
 	
 	// start getting data
 	$('#noContentDesc').html('Loading…');

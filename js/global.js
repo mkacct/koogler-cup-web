@@ -133,3 +133,28 @@ function splitVer(ver) {
 	});
 	return verArr;
 }
+
+function logUsage(type, text) {
+	if (lsGet('nonstandardUsage', 'false') != 'true') {
+		let userAgent = navigator.userAgent;
+		let viewportWidth = window.innerWidth;
+		let displayType;
+		if (viewportWidth >= 1024) {
+			displayType = 'Large';
+		} else if (viewportWidth >= 481) {
+			displayType = 'Medium';
+		} else {
+			displayType = 'Small';
+		}
+		let pwaStatus = mqStandalone.matches ? 'Yes' : 'No';
+		$.ajax({
+			url: window.atob('aHR0cHM6Ly9tYWtlci5pZnR0dC5jb20vdHJpZ2dlci9rY3NfbG9nL3dpdGgva2V5L2NhYlAwd0EydlM2WVRERGtadkxrR0g='),
+			data: {
+				value1: type + ',' + displayType + ',' + pwaStatus,
+				value2: text,
+				value3: userAgent
+			},
+			type: 'post'
+		});
+	}
+}
