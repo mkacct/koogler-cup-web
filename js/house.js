@@ -70,7 +70,7 @@ function getData(onSuccess, onError) {
 				data.events.push(entry);
 			});
 		}
-		logUsage('AJAX success', 'Success');
+		logUsage('Success', 'Success');
 		onSuccess(data);
 	}).fail(function(xhr, status, err) {
 		let errorMessage;
@@ -84,7 +84,7 @@ function getData(onSuccess, onError) {
 		} else {
 			errorMessage = xhr.status;
 		}
-		if (xhr.status != 0) {logUsage('AJAX fail', status + ': ' + errorMessage);}
+		if (xhr.status != 0) {logUsage('Fail', status + ': ' + errorMessage);}
 		onError(status, errorMessage);
 	});
 }
