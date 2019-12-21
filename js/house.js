@@ -127,7 +127,3 @@ function decimalPlaces(num) {
 		return 0;
 	}
 }
-
-function asBoolean(string) {
-	return string.toLowerCase() == 'true';
-}

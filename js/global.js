@@ -134,8 +134,12 @@ function splitVer(ver) {
 	return verArr;
 }
 
+function asBoolean(string) {
+	return string.toLowerCase() == 'true';
+}
+
 function logUsage(type, text) {
-	if (lsGet('nonstandardUsage', 'false') != 'true') {
+	if (window.location.protocol != 'file:' && !asBoolean(lsGet('nonstandardUsage', 'false'))) {
 		let userAgent = navigator.userAgent;
 		let viewportWidth = window.innerWidth;
 		let displayType;

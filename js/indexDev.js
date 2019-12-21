@@ -17,4 +17,13 @@ $(document).ready(function() {
 			devClickCount = 0;
 		}
 	});
+	$('#nonstandardUsageButton').on('click', function(e) {
+		if (asBoolean(lsGet('nonstandardUsage', 'false'))) {
+			lsSet('nonstandardUsage', 'false');
+			toast('Nonstandard usage unmarked', 1000);
+		} else {
+			lsSet('nonstandardUsage', 'true');
+			toast('Nonstandard usage marked', 1000);
+		}
+	});
 });
