@@ -12,4 +12,5 @@ const animTime = 500; // for content loading & toasts
 const uiAnimTime = 250; // for clicking on stuff
 
 // update notes, oldest first
+// example: {version: '1.0', text: 'Added something'}
 const updateNotes = [];
