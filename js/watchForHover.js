@@ -1,3 +1,5 @@
+// i didn't make this script, idk who did
+
 function watchForHover() {
     var hasHoverClass = false;
     var container = document.body;
