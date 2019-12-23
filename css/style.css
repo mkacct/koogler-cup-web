@@ -6,12 +6,14 @@ body {
 	font-family: 'Roboto', sans-serif;
 	background-color: #181818;
 	color: white;
+	touch-action: manipulation;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-touch-callout: none;
 }
 
 @media all and (display-mode: standalone) {
 	body {
-		-webkit-tap-highlight-color: transparent;
-		-webkit-touch-callout: none;
+		touch-action: pan-x pan-y;
 	}
 }
 
@@ -60,9 +62,10 @@ button {
 }
 
 button:not([disabled]) {cursor: pointer;}
+button:focus {outline: none;} /* for firefox */
 
 body.hasHover button:not([disabled]):hover, button:focus {background-color: rgba(255, 255, 255, 0.15);}
-body.hasHover button:not([disabled]):active {background-color: rgba(255, 255, 255, 0.3);}
+button:not([disabled]):active {background-color: rgba(255, 255, 255, 0.3) !important;}
 
 button:not(.roundButton) i {margin-right: 0.5em;}
 
