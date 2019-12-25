@@ -62,6 +62,7 @@ button {
 }
 
 button:not([disabled]) {cursor: pointer;}
+button[disabled] {color: gray;}
 button:focus {outline: none;} /* for firefox */
 
 body.hasHover button:not([disabled]):hover, button:focus {background-color: rgba(255, 255, 255, 0.15);}
