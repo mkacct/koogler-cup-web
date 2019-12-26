@@ -140,7 +140,7 @@ body.hasHover a:hover {text-decoration: underline;}
 	transform: translate(-50%, 0);
 	z-index: 4;
 	text-align: center;
-	background-color: rgb(80, 80, 80, 0.95);
+	background-color: rgba(80, 80, 80, 0.95);
 	border-radius: 1em;
 }
 
