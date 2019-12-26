@@ -97,16 +97,25 @@ function generateExpandLink(defaultText, shownText, containerSelector) {
 // local storage
 
 function lsGet(key, fallback) {
-	let item = localStorage.getItem('kcs_' + key);
-	if (typeof item == 'string') {
-		return item;
+	if (window.localStorage) {
+		let item = localStorage.getItem('kcs_' + key);
+		if (typeof item == 'string') {
+			return item;
+		} else {
+			return fallback.toString();
+		}
 	} else {
+		console.log('lsGet failed because localStorage is not available');
 		return fallback.toString();
 	}
 }
 
 function lsSet(key, value) {
-	localStorage.setItem('kcs_' + key, value.toString());
+	if (window.localStorage) {
+		localStorage.setItem('kcs_' + key, value.toString());
+	} else {
+		console.log('lsSet failed because localStorage is not available');
+	}
 }
 
 // if currentVer > storedVer
