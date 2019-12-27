@@ -97,7 +97,7 @@ function placeScores(scores) {
 			score: scores[houses[i]]
 		});
 	}
-	placedScores.sort(function(a, b) {return b.score - a.score});
+	placedScores.sort(function(a, b) {return b.score - a.score;});
 	for (let i = 0; i < 8; i++) {
 		if (i > 0 && placedScores[i].score == placedScores[i - 1].score) {
 			placedScores[i].place = placedScores[i - 1].place;
