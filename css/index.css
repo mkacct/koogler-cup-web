@@ -46,7 +46,10 @@ h1 {
 	list-style: none;
 }
 
-#credits {display: none;}
+#credits {
+	display: none;
+	text-align: center;
+}
 
 .centeredDot {
 	margin: 0 auto;
