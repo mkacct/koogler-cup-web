@@ -141,7 +141,6 @@ $(document).ready(function() {
 		$('#creditsBackButton').fadeIn(uiAnimTime);
 	});
 	$('#creditsBackButton').on('click', function(e) {
-		$(this).blur();
 		$('#credits').slideUp(uiAnimTime);
 		$('#notCredits').slideDown(uiAnimTime);
 		$('#creditsBackButton').fadeOut(uiAnimTime);
