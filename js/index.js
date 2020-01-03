@@ -123,7 +123,7 @@ $(document).ready(function() {
 			}
 			openModal('#alphaListModal');
 		} else {
-			toast('No events are visible; you can\'t use this feature right now', 3000)
+			toast('No events are visible; you can\'t use this feature right now', 3000) // how did you even reach this line anyway
 		}
 	});
 	// to show the update notes by button
@@ -351,6 +351,8 @@ function updateVisuals(obj) {
 			changeNoContentDesc('You cannot view the data at this time.');
 		}
 	}
+	// enable/disable alpha list button (lazy ik)
+	$('#alphaListButton').attr('disabled', obj.showEls == false || obj.noEventsYet == true);
 }
 
 // states: 'off', 'waiting', 'complete', 'error'
