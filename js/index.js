@@ -352,7 +352,7 @@ function updateVisuals(obj) {
 		}
 	}
 	// enable/disable alpha list button (lazy ik)
-	$('#alphaListButton').attr('disabled', obj.showEls == false || obj.noEventsYet == true);
+	setTimeout(function() {$('#alphaListButton').attr('disabled', obj.showEls == false || obj.noEventsYet == true);}, animTime);
 }
 
 // states: 'off', 'waiting', 'complete', 'error'
