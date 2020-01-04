@@ -1,5 +1,6 @@
 'use strict';
 
+var selectedId = spreadsheetId;
 const houses = ['Fairview', 'Fulton Creek', 'Houk', 'Lockport', 'Prospect Hill', 'Ridge', 'Steamtown', 'Sugar Grove'];
 const houseColors = {
 	'Fairview': 'gray',
@@ -34,7 +35,7 @@ function checkEvents(events, prevEvents) {
 // onSuccess(object data), onError(string status, string error)
 function getData(onSuccess, onError) {
 	$.ajax({
-		url: 'https://sheets.googleapis.com/v4/spreadsheets/' + spreadsheetId + '/values:batchGet',
+		url: 'https://sheets.googleapis.com/v4/spreadsheets/' + selectedId + '/values:batchGet',
 		data: {
 			key: apiKey,
 			ranges: ['Main', 'Events']

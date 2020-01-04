@@ -3,6 +3,7 @@
 var prevData = {type: 'none'};
 var prevShowEls = false;
 var updateTimeout;
+var devClickCount = 0;
 
 // begin pwa install stuff
 
@@ -177,6 +178,47 @@ $(document).ready(function() {
 	}
 	
 	logUsage('Open', 'index');
+	
+	// dev menu stuff
+	$('#devStandalone').text(mqStandalone.matches);
+	$('#devUA').text(navigator.userAgent);
+	$('body').on('click', function(e) {
+		if ($(e.target).is($('#cred'))) {
+			devClickCount++;
+			if (devClickCount >= 4) {
+				devClickCount = 0;
+				if (window.confirm('Open developer menu?')) {openModal('#devModal');}
+			}
+		} else {
+			devClickCount = 0;
+		}
+	});
+	$('#nonstandardUsageButton').on('click', function(e) {
+		if (asBoolean(lsGet('nonstandardUsage', 'false'))) {
+			lsSet('nonstandardUsage', 'false');
+			toast('Nonstandard usage unmarked', 1000);
+		} else {
+			lsSet('nonstandardUsage', 'true');
+			toast('Nonstandard usage marked', 1000);
+		}
+	});
+	$('#fakeDataButton').on('click', function(e) {
+		if (window.confirm('Enable fake data?')) {
+			lsSet('fakeData', 'true');
+			window.location.reload();
+		}
+	});
+	if (asBoolean(lsGet('fakeData', 'false'))) {
+		// fake data time
+		selectedId = fakeSpreadsheetId;
+		$('#outside h1').text('Fake data').css('color', 'red');
+		$('#notCredits').prepend($('<button></button>').attr('id', 'cancelFakeDataButton').text('Stop using fake data'));
+		$('#cancelFakeDataButton').on('click', function(e) {
+			lsSet('fakeData', 'false');
+			window.location.reload();
+		});
+	}
+	// end dev menu stuff
 	
 	// start getting data
 	$('#noContentDesc').html('Loading…');
