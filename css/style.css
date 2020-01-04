@@ -26,6 +26,7 @@ header, h1, h2, h3, button, img, .toast, .expandLink {
 
 header {
 	position: sticky;
+	-webkit-position: sticky;
 	top: 0;
 	z-index: 1;
 	display: flex;
@@ -150,20 +151,18 @@ body.hasHover a:hover {text-decoration: underline;}
 .buttonRow button:last-child {margin-right: 0;}
 
 @media screen and (min-width: 481px) {
-	header {
-		border-radius: 0 0 1em 1em;
-	}
-	
 	tr:first-child td:first-child {border-top-left-radius: 1em;}
 	tr:first-child td:last-child {border-top-right-radius: 1em;}
 	tr:last-child td:first-child {border-bottom-left-radius: 1em;}
 	tr:last-child td:last-child {border-bottom-right-radius: 1em;}
 	
 	#outside, .modalContent {margin: 0 10%;}
+	header {padding: 0.5em calc(10% + 1em);}
 	.toast {width: calc(80% - 4em);}
 }
 
 @media screen and (min-width: 1024px) {
 	#outside, .modalContent {margin: 0 25%;}
+	header {padding: 0.5em calc(25% + 1em);}
 	.toast {width: calc(50% - 4em);}
 }
