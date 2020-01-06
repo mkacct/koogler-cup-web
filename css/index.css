@@ -1,3 +1,5 @@
+body {overflow-y: scroll;}
+
 #noContentDesc, table, #notCredits, #installModal {
 	user-select: none;
 	-moz-user-select: none;
