@@ -187,6 +187,7 @@ $(document).ready(function() {
 			devClickCount++;
 			if (devClickCount >= 4) {
 				devClickCount = 0;
+				logUsage('Feature', 'Dev menu');
 				if (window.confirm('Open developer menu?')) {openModal('#devModal');}
 			}
 		} else {
