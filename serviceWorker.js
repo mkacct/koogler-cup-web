@@ -41,7 +41,7 @@ self.addEventListener('install', function(e) {
 	// Precache static resources here.
 	e.waitUntil(caches.open(cacheName).then(function(cache) {
 		return cache.addAll(filesToCache);
-	}););
+	}));
 	self.skipWaiting();
 });
 
