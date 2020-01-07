@@ -14,7 +14,7 @@ window.addEventListener('beforeinstallprompt', function(e) {
 	$('#installButton').parent().show();
 });
 
-window.onappinstalled = function(e) {hideInstallOption(true);};
+window.addEventListener('appinstalled', function(e) {hideInstallOption(true)});
 
 function hideInstallOption(installed) {
 	if (installed) {
