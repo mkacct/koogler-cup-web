@@ -3,11 +3,13 @@
 const isAndroid = navigator.userAgent.toLowerCase().indexOf('android') > -1;
 const mqStandalone = window.matchMedia('(display-mode: standalone)');
 
+/*
 if ('serviceWorker' in navigator) {
 	window.addEventListener('load', function() {
 		navigator.serviceWorker.register('serviceWorker.js');
 	});
 }
+*/
 
 $(document).ready(function() {
 	// tell desktop from mobile for hover
