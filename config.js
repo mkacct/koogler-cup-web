@@ -1,6 +1,6 @@
 'use strict';
 
-const version = '0.1.1';
+const version = '0.1.2';
 
 const apiKey = 'AIzaSyCljp-6sxk9qo3mjrvzKgVZmu-HzYtgM1c'; // google api key
 const spreadsheetId = '12UgKkow7LXLHgf5v45EsjuPuf_7COerJ7mnLgWdNCbs';
