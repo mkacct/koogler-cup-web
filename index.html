@@ -38,10 +38,10 @@
 		<header>
 			<div><img src="res/logo.png" id="logo" alt="App logo icon"></div>
 			<div style="flex-grow: 1;"></div>
-			<div><button class="roundButton" id="updateButton" name="Refresh" disabled></button></div>
-			<div><button class="roundButton" id="alphaListButton" name="Alphabetical list" disabled><i class="fas fa-list-ul"></i></button></div>
-			<div style="display: none;"><button class="roundButton" id="installButton" name="Install web app"><i class="fas fa-arrow-alt-circle-down"></i></button></div>
-			<div><button id="menuButton" class="roundButton" name="Menu"><i class="fas fa-ellipsis-h"></i></button></div>
+			<div><button class="roundButton" id="updateButton" aria-label="Refresh" disabled></button></div>
+			<div><button class="roundButton" id="alphaListButton" aria-label="Alphabetical list" disabled><i class="fas fa-list-ul"></i></button></div>
+			<div style="display: none;"><button class="roundButton" id="installButton" aria-label="Install web app"><i class="fas fa-arrow-alt-circle-down"></i></button></div>
+			<div><button id="menuButton" class="roundButton" aria-label="Menu"><i class="fas fa-ellipsis-h"></i></button></div>
 		</header>
 		<div id="outside">
 			<h1>Koogler Cup Standings</h1>
@@ -55,14 +55,14 @@
 		<div class="modal" id="menuModal">
 			<div class="modalContent">
 				<div class="modalNav">
-					<button class="roundButton" id="creditsBackButton" name="Back"><i class="fas fa-arrow-left"></i></button>
+					<button class="roundButton" id="creditsBackButton" aria-label="Back"><i class="fas fa-arrow-left"></i></button>
 					<div style="flex-grow: 1;"></div>
-					<button class="modalClose roundButton" name="Close"><i class="fas fa-times"></i></button>
+					<button class="modalClose roundButton" aria-label="Close"><i class="fas fa-times"></i></button>
 				</div>
 				<div id="notCredits">
 					<div class="menuCategory">
 						<h3>Twitter</h3>
-						<p>To receive notifications when event results are added, follow the <a href="https://twitter.com/HayesKooglerCup" target="_blank" id="twitterLink">Twitter account</a> and turn on account notifications.</p>
+						<p>To receive notifications when event results are added, follow the <a href="https://twitter.com/HayesKooglerCup" target="_blank" rel="noopener" id="twitterLink">Twitter account</a> and turn on account notifications.</p>
 					</div>
 					<div class="menuCategory" style="margin-bottom: 1em;">
 						<h3>More options</h3>
@@ -82,7 +82,7 @@
 		<div class="modal" id="installModal">
 			<div class="modalContent">
 				<div class="modalNav">
-					<button class="modalClose roundButton" name="Close"><i class="fas fa-times"></i></button>
+					<button class="modalClose roundButton" aria-label="Close"><i class="fas fa-times"></i></button>
 				</div>
 				<h3>Install web app</h3>
 				<p>You can add this site to your device as an app.</p>
@@ -92,7 +92,7 @@
 		<div class="modal" id="alphaListModal">
 			<div class="modalContent">
 				<div class="modalNav">
-					<button class="modalClose roundButton" name="Close"><i class="fas fa-times"></i></button>
+					<button class="modalClose roundButton" aria-label="Close"><i class="fas fa-times"></i></button>
 				</div>
 				<h3>Alphabetical list</h3>
 				<ul id="alphaList"></ul>
@@ -101,7 +101,7 @@
 		<div class="modal" id="updateNotesModal">
 			<div class="modalContent">
 				<div class="modalNav">
-					<button class="modalClose roundButton" name="Close"><i class="fas fa-times"></i></button>
+					<button class="modalClose roundButton" aria-label="Close"><i class="fas fa-times"></i></button>
 				</div>
 				<h3>Update notes</h3>
 				<p id="currentUpdate">You'll be able to view update notes here.</p>
@@ -109,7 +109,7 @@
 				<div class="hidden" id="prevUpdates">
 					<p style="color: gray;">No history yet</p>
 				</div>
-				<button style="margin: 1em 0;" class="modalClose" name="Close">Close</button>
+				<button style="margin: 1em 0;" class="modalClose">Close</button>
 				<p style="text-align: center; margin: 0;">version <span class="versionNumber"></span></p>
 			</div>
 		</div>
@@ -122,7 +122,7 @@
 		<div class="modal" id="devModal">
 			<div class="modalContent">
 				<div class="modalNav">
-					<button class="modalClose roundButton" href="javascript:void(0)" name="Close"><i class="fas fa-times"></i></button>
+					<button class="modalClose roundButton" href="javascript:void(0)" aria-label="Close"><i class="fas fa-times"></i></button>
 				</div>
 				<h3>Developer menu</h3>
 				<ul style="overflow-wrap: break-word;">

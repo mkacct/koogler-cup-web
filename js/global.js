@@ -162,14 +162,16 @@ function logUsage(type, text) {
 			displayType = 'Small';
 		}
 		let pwaStatus = mqStandalone.matches ? 'Yes' : 'No';
-		$.ajax({
-			url: window.atob('aHR0cHM6Ly9tYWtlci5pZnR0dC5jb20vdHJpZ2dlci9rY3NfbG9nL3dpdGgva2V5L2NhYlAwd0EydlM2WVRERGtadkxrR0g='),
-			data: {
-				value1: type + ',' + displayType + ',' + pwaStatus + ',' + version,
-				value2: text,
-				value3: userAgent
-			},
-			type: 'post'
-		});
+		try {
+			$.ajax({
+				url: window.atob('aHR0cHM6Ly9tYWtlci5pZnR0dC5jb20vdHJpZ2dlci9rY3NfbG9nL3dpdGgva2V5L2NhYlAwd0EydlM2WVRERGtadkxrR0g='),
+				data: {
+					value1: type + ',' + displayType + ',' + pwaStatus + ',' + version,
+					value2: text,
+					value3: userAgent
+				},
+				type: 'post'
+			});
+		} catch (ignore) {}
 	}
 }
