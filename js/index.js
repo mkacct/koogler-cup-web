@@ -48,10 +48,17 @@ $(document).ready(function() {
 		$(window).on('popstate', function(e) {
 			window.history.pushState({}, '');
 			if ($('.modal:visible').length > 0) {
-				closeModal();
+				if ($('#creditsBackButton:visible').length > 0) {
+					// pls make this a function if it becomes any more important
+					$('#credits').slideUp(uiAnimTime);
+					$('#notCredits').slideDown(uiAnimTime);
+					$('#creditsBackButton').fadeOut(uiAnimTime);
+				} else {
+					closeModal();
+				}
 			} else {
 				//openModal('#closeAppModal');
-				toast('Unfortunately, you can\'t close the app this way.', 3000);
+				toast('Please use a different feature to leave the app', 3000);
 			}
 		});
 		window.history.pushState({}, '');
