@@ -216,6 +216,9 @@ $(document).ready(function() {
 			window.location.reload();
 		}
 	});
+	$('#devButton3').on('click', function(e) {
+		alert(window.matchMedia(prompt('Enter media query')).matches);
+	});
 	if (asBoolean(lsGet('fakeData', 'false'))) {
 		// fake data time
 		selectedId = fakeSpreadsheetId;
