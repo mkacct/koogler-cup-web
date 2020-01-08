@@ -58,7 +58,7 @@ $(document).ready(function() {
 				}
 			} else {
 				//openModal('#closeAppModal');
-				toast('Please use a different feature to leave the app', 3000);
+				toast('Use a different feature to leave the app', 3000);
 			}
 		});
 		window.history.pushState({}, '');
