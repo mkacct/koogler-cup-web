@@ -222,9 +222,6 @@ $(document).ready(function() {
 	$('#mqButton').on('click', function(e) {
 		alert(window.matchMedia(prompt('Enter media query')).matches);
 	});
-	$('#hardReloadButton').on('click', function(e) {
-		window.location.reload(true);
-	});
 	if (asBoolean(lsGet('fakeData', 'false'))) {
 		// fake data time
 		selectedId = fakeSpreadsheetId;
