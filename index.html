@@ -37,7 +37,7 @@
 	</head>
 	<body>
 		<header>
-			<div><img src="res/logo.png" id="logo" alt="App logo icon"></div>
+			<div><a href="javascript:void(0);" id="logoLink"><img src="res/logo.png" id="logo" alt="App logo icon"></a></div>
 			<div style="flex-grow: 1;"></div>
 			<div><button class="roundButton" id="updateButton" aria-label="Refresh" disabled></button></div>
 			<div><button class="roundButton" id="alphaListButton" aria-label="Alphabetical list" disabled><i class="fas fa-list-ul"></i></button></div>
@@ -106,7 +106,7 @@
 				</div>
 				<h3>Update notes</h3>
 				<p id="currentUpdate">You'll be able to view update notes here.</p>
-				<div><a class="expandLink" data-default-text="Show history" data-shown-text="Collapse" data-container-selector=".modalContent" href="javascript:void(0)"><i class="fas fa-chevron-down"></i> Show history</a></div>
+				<div><a class="expandLink" data-default-text="Show history" data-shown-text="Collapse" data-container-selector=".modalContent" href="javascript:void(0);"><i class="fas fa-chevron-down"></i> Show history</a></div>
 				<div class="hidden" id="prevUpdates">
 					<p style="color: gray;">No history yet</p>
 				</div>
@@ -123,7 +123,7 @@
 		<div class="modal" id="devModal">
 			<div class="modalContent">
 				<div class="modalNav">
-					<button class="modalClose roundButton" href="javascript:void(0)" aria-label="Close"><i class="fas fa-times"></i></button>
+					<button class="modalClose roundButton" href="javascript:void(0);" aria-label="Close"><i class="fas fa-times"></i></button>
 				</div>
 				<h3>Developer menu</h3>
 				<p id="devUA" style="overflow-wrap: break-word; color: cyan;"></p>

@@ -85,7 +85,7 @@ function toast(message, toastTime) {
 }
 
 function generateExpandLink(defaultText, shownText, containerSelector) {
-	return $('<a href="javascript:void(0)"></a>').html('<i class="fas fa-chevron-down"></i> ' + defaultText).addClass('expandLink').attr('data-container-selector', containerSelector).attr('data-default-text', defaultText).attr('data-shown-text', shownText);
+	return $('<a href="javascript:void(0);"></a>').html('<i class="fas fa-chevron-down"></i> ' + defaultText).addClass('expandLink').attr('data-container-selector', containerSelector).attr('data-default-text', defaultText).attr('data-shown-text', shownText);
 }
 
 // local storage

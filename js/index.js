@@ -69,6 +69,10 @@ $(document).ready(function() {
 		});
 		*/
 	}
+	// to scroll to top by clicking the logo
+	$('#logoLink').on('click', function(e) {
+		$('html, body').animate({scrollTop: 0}, uiAnimTime);
+	});
 	// to reload by button
 	$('#updateButton').on('click', function(e) {
 		clearTimeout(updateTimeout);
