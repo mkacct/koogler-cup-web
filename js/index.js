@@ -187,7 +187,6 @@ $(document).ready(function() {
 	logUsage('Open', 'index');
 	
 	// dev menu stuff
-	$('#devStandalone').text(mqStandalone.matches);
 	$('#devUA').text(navigator.userAgent);
 	$('body').on('click', function(e) {
 		if ($(e.target).is($('#cred'))) {
@@ -216,7 +215,7 @@ $(document).ready(function() {
 			window.location.reload();
 		}
 	});
-	$('#devButton3').on('click', function(e) {
+	$('#mqButton').on('click', function(e) {
 		alert(window.matchMedia(prompt('Enter media query')).matches);
 	});
 	if (asBoolean(lsGet('fakeData', 'false'))) {
