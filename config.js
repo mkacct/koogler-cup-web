@@ -1,6 +1,6 @@
 'use strict';
 
-const version = '0.2.2';
+const version = '1.0';
 
 const apiKey = 'AIzaSyCljp-6sxk9qo3mjrvzKgVZmu-HzYtgM1c'; // google api key
 const spreadsheetId = '12UgKkow7LXLHgf5v45EsjuPuf_7COerJ7mnLgWdNCbs';
@@ -13,4 +13,9 @@ const uiAnimTime = 250; // for clicking on stuff
 
 // update notes, oldest first
 // example: {version: '1.0', text: 'Added something'}
-const updateNotes = [];
+const updateNotes = [
+	{
+		version: '1.0',
+		text: 'Released'
+	}
+];
