@@ -15,15 +15,15 @@ body {
 }
 
 header, h1, h2, h3, button, img, .toast, .expandLink {
-	user-select: none;
 	-moz-user-select: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;
+	user-select: none;
 }
 
 header {
+	position: -webkit-sticky;
 	position: sticky;
-	-webkit-position: sticky;
 	top: 0;
 	z-index: 1;
 	display: flex;
