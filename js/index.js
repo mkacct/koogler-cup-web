@@ -21,7 +21,7 @@ function hideInstallOption(installed) {
 		$('#installButton').parent().hide();
 		logUsage('Feature', 'PWA install');
 	}
-	if ($('#installModal:visible')) {
+	if ($('#installModal:visible').length > 0) {
 		closeModal(function() {hideInstallOption2(installed);});
 	} else {
 		hideInstallOption2(installed);
