@@ -11,9 +11,7 @@ body {
 }
 
 @media all and (display-mode: standalone) {
-	body {
-		touch-action: pan-x pan-y;
-	}
+	body {touch-action: pan-x pan-y;}
 }
 
 header, h1, h2, h3, button, img, .toast, .expandLink {

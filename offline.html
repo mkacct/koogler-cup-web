@@ -30,13 +30,19 @@
 	</body>
 </html>
 <style>
-/* all css required for offline.html, because i don't understand service workers */
+/* all css required for offline.html */
+
+html {overscroll-behavior: contain;}
 
 body {
 	font-family: 'Roboto', sans-serif;
 	margin: 0;
 	background-color: #181818;
 	color: white;
+	touch-action: manipulation;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-touch-callout: none;
+	overscroll-behavior: contain;
 	user-select: none;
 	-moz-user-select: none;
 	-webkit-user-select: none;
@@ -44,14 +50,7 @@ body {
 }
 
 @media all and (display-mode: standalone) {
-	html {
-		overscroll-behavior: contain;
-	}
-	
-	body {
-		-webkit-tap-highlight-color: transparent;
-		-webkit-touch-callout: none;
-	}
+	body {touch-action: pan-x pan-y;}
 }
 
 @media screen and (min-width: 481px) {
@@ -81,11 +80,15 @@ button {
 	outline: none;
 	color: inherit;
 	font: inherit;
-	cursor: pointer;
 	padding: 0.5em 1em;
 	border: 1px solid rgba(255, 255, 255, 0.3);
 	border-radius: 1em;
+	transition: background-color 0.25s;
 }
+
+button:not([disabled]) {cursor: pointer;}
+button[disabled] {color: gray;}
+button:focus {outline: none;} /* for firefox */
 
 button:focus {background-color: rgba(255, 255, 255, 0.15);}
 </style>
