@@ -2,7 +2,7 @@
 
 const version = '1.0.4';
 
-const apiKey = 'AIzaSyCljp-6sxk9qo3mjrvzKgVZmu-HzYtgM1c'; // google api key
+const apiKey = window.atob('QUl6YVN5Q2xqcC02c3hrOXFvM21qcnZ6S2dWWm11LUh6WXRnTTFj'); // google api key
 const spreadsheetId = '12UgKkow7LXLHgf5v45EsjuPuf_7COerJ7mnLgWdNCbs';
 const fakeSpreadsheetId = '1i5f7R7_iv4w1zMJkfoi1mLL6cFmvmhq2Cw2aPX8llUQ';
 
