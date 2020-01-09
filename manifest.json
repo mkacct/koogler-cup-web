@@ -1,6 +1,7 @@
 {
 	"name": "Koogler Cup Standings",
 	"short_name": "Koogler Cup",
+	"description": "View the scores of the Hayes High School houses toward the Koogler Cup, including event history and additional features",
 	"dir": "ltr",
 	"lang": "en-US",
 	"display": "standalone",
