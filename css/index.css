@@ -24,7 +24,10 @@ h1 {
 
 .errorMessage {color: red;}
 
-#noContentDesc {text-align: center;}
+#noContentDesc {
+	text-align: center;
+	margin: 0 1em;
+}
 
 .placeCell {font-weight: bold;}
 .houseCell {width: 100%;}

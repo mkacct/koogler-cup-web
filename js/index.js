@@ -190,49 +190,7 @@ $(document).ready(function() {
 	
 	logUsage('Open', 'index');
 	
-	// dev menu stuff
-	$('#devUA').text(navigator.userAgent);
-	$('body').on('click', function(e) {
-		if ($(e.target).is($('#cred'))) {
-			devClickCount++;
-			if (devClickCount >= 4) {
-				devClickCount = 0;
-				logUsage('Feature', 'Dev menu');
-				if (window.confirm('Open developer menu?')) {openModal('#devModal');}
-			}
-		} else {
-			devClickCount = 0;
-		}
-	});
-	$('#nonstandardUsageButton').on('click', function(e) {
-		if (asBoolean(lsGet('nonstandardUsage', 'false'))) {
-			lsSet('nonstandardUsage', 'false');
-			toast('Nonstandard usage unmarked', 1000);
-		} else {
-			lsSet('nonstandardUsage', 'true');
-			toast('Nonstandard usage marked', 1000);
-		}
-	});
-	$('#fakeDataButton').on('click', function(e) {
-		if (window.confirm('Enable fake data?')) {
-			lsSet('fakeData', 'true');
-			window.location.reload();
-		}
-	});
-	$('#mqButton').on('click', function(e) {
-		alert(window.matchMedia(prompt('Enter media query')).matches);
-	});
-	if (asBoolean(lsGet('fakeData', 'false'))) {
-		// fake data time
-		selectedId = fakeSpreadsheetId;
-		$('#outside h1').text('Fake data').css('color', 'red');
-		$('#notCredits').prepend($('<button></button>').attr('id', 'cancelFakeDataButton').text('Stop using fake data'));
-		$('#cancelFakeDataButton').on('click', function(e) {
-			lsSet('fakeData', 'false');
-			window.location.reload();
-		});
-	}
-	// end dev menu stuff
+	setupDevMenu();
 	
 	// start getting data
 	$('#noContentDesc').html('Loading…');
@@ -333,7 +291,8 @@ function update() {
 		updateVisuals({
 			status: 'error',
 			errorText: reqStatus + ': ' + err,
-			showEls: prevShowEls
+			showEls: prevShowEls,
+			clientError: err == 'client error'
 		});
 		prevData = {type: 'error'};
 		clearTimeout(updateTimeout);
@@ -345,6 +304,7 @@ function update() {
 	{
 		status: string ('live', 'error', 'disabled'),
 		errorText: string,
+		clientError: boolean,
 		showEls: boolean,
 		scoreboard: jquery,
 		eventsHeadingText: string,
@@ -401,7 +361,7 @@ function updateVisuals(obj) {
 		fadeChange($('#eventsHeading'), function(it) {it.empty();});
 		fadeChange($('#events'), function(it) {it.empty();});
 		if (obj.status == 'error') { // special case with error message
-			changeNoContentDesc('An error occurred, click the <i class="fas fa-redo-alt"></i> button to retry');
+			changeNoContentDesc('An error occurred, click the <i class="fas fa-redo-alt"></i> button to retry' + (obj.clientError ? '<br>Make sure you are connected to the internet' : ''));
 		} else {
 			// assuming it is because of disabled, since that's the only reason i have to remove content for now
 			changeNoContentDesc('You cannot view the data at this time.');
@@ -473,4 +433,48 @@ function numberEl(num, dp) {
 	for (let i = 0; i < dp - initialDP; i++) {hiddenText.append('0');}
 	el.append(hiddenText);
 	return el;
+}
+
+function setupDevMenu() {
+	$('#devUA').text(navigator.userAgent);
+	$('body').on('click', function(e) {
+		if ($(e.target).is($('#cred'))) {
+			devClickCount++;
+			if (devClickCount >= 4) {
+				devClickCount = 0;
+				logUsage('Feature', 'Dev menu');
+				if (window.confirm('Open developer menu?')) {openModal('#devModal');}
+			}
+		} else {
+			devClickCount = 0;
+		}
+	});
+	$('#nonstandardUsageButton').on('click', function(e) {
+		if (asBoolean(lsGet('nonstandardUsage', 'false'))) {
+			lsSet('nonstandardUsage', 'false');
+			toast('Nonstandard usage unmarked', 1000);
+		} else {
+			lsSet('nonstandardUsage', 'true');
+			toast('Nonstandard usage marked', 1000);
+		}
+	});
+	$('#fakeDataButton').on('click', function(e) {
+		if (window.confirm('Enable fake data?')) {
+			lsSet('fakeData', 'true');
+			window.location.reload();
+		}
+	});
+	$('#mqButton').on('click', function(e) {
+		alert(window.matchMedia(prompt('Enter media query')).matches);
+	});
+	if (asBoolean(lsGet('fakeData', 'false'))) {
+		// fake data time
+		selectedId = fakeSpreadsheetId;
+		$('#outside h1').text('Fake data').css('color', 'red');
+		$('#notCredits').prepend($('<button></button>').attr('id', 'cancelFakeDataButton').text('Stop using fake data'));
+		$('#cancelFakeDataButton').on('click', function(e) {
+			lsSet('fakeData', 'false');
+			window.location.reload();
+		});
+	}
 }
