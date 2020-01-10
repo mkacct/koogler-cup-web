@@ -105,8 +105,8 @@ $(document).ready(function() {
 		let eventEls = $('.event');
 		if (eventEls.length > 0) {
 			eventEls.sort(function(a, b) {
-				let stringA = $(a).children('.eventTitle').text();
-				let stringB = $(b).children('.eventTitle').text();
+				let stringA = $(a).children('h3').text();
+				let stringB = $(b).children('h3').text();
 				let stringA2 = stringA;
 				let stringB2 = stringB;
 				let prefixes = ['Q1 ', 'Q2 ', 'Q3 ', 'Q4 '];
@@ -121,7 +121,7 @@ $(document).ready(function() {
 			});
 			$('#alphaList').empty();
 			for (let i = 0; i < eventEls.length; i++) {
-				let eventA = $('<a></a>').attr('href', 'javascript:void(0);').text($(eventEls[i]).children('.eventTitle').text());
+				let eventA = $('<a></a>').attr('href', 'javascript:void(0);').text($(eventEls[i]).children('h3').text());
 				eventA.on('click', function(e) {
 					closeModal();
 					if ($(document).has(eventEls[i]).length > 0) { // if event element is in dom
@@ -257,8 +257,8 @@ function update() {
 				visuals.appendEvents = updateType == 'add'; // use append mode if necessary
 				visuals.events = []; // array of jq objects
 				for (let i = 0; i < newEvents.length; i++) { // for each of the new events, create its html element
-					let event = $('<div></div>').addClass('event');
-					event.append($('<div></div>').text(newEvents[i].name).addClass('eventTitle'));
+					let event = $('<section></section>').addClass('event');
+					event.append($('<h3></h3>').text(newEvents[i].name));
 					let evtPlacedScores = placeScores(newEvents[i].scores);
 					let placeList = $('<ul></ul>');
 					let hiddenPlaces = $('<div></div>').addClass('hidden');
@@ -470,7 +470,7 @@ function setupDevMenu() {
 	if (asBoolean(lsGet('fakeData', 'false'))) {
 		// fake data time
 		selectedId = fakeSpreadsheetId;
-		$('#outside h1').text('Fake data').css('color', 'red');
+		$('main h1').text('Fake data').css('color', 'red');
 		$('#notCredits').prepend($('<button></button>').attr('id', 'cancelFakeDataButton').text('Stop using fake data'));
 		$('#cancelFakeDataButton').on('click', function(e) {
 			lsSet('fakeData', 'false');
