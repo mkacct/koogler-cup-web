@@ -1,6 +1,6 @@
 'use strict';
 
-var selectedId = spreadsheetId;
+let selectedId = spreadsheetId;
 const houses = ['Fairview', 'Fulton Creek', 'Houk', 'Lockport', 'Prospect Hill', 'Ridge', 'Steamtown', 'Sugar Grove'];
 const houseColors = {
 	'Fairview': 'gray',

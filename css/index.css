@@ -18,8 +18,8 @@ body {overflow-y: scroll;}
 h1, h2 {text-align: center;}
 
 h1 {
-	margin-left: 0.5em;
-	margin-right: 0.5em;
+	margin-left: 16px;
+	margin-right: 16px;
 }
 
 .errorMessage {color: red;}
@@ -33,7 +33,10 @@ h1 {
 .houseCell {width: 100%;}
 .scoreCell {text-align: right;}
 
-#eventsHeading div {margin-top: 2em;}
+#eventsHeading div {
+	margin: 2em 16px 0;
+}
+
 .nothingText {color: gray}
 
 #events {margin-bottom: 1em;}

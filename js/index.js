@@ -1,9 +1,9 @@
 'use strict';
 
-var prevData = {type: 'none'};
-var prevShowEls = false;
-var updateTimeout;
-var devClickCount = 0;
+let prevData = {type: 'none'};
+let prevShowEls = false;
+let updateTimeout;
+let devClickCount = 0;
 
 // begin pwa install stuff
 
