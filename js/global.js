@@ -29,10 +29,10 @@ $(document).ready(function() {
 		let hidden = $(this).parents($(this).attr('data-container-selector')).find('.hidden');
 		if (hidden.is(':visible')) {
 			hidden.slideUp(uiAnimTime);
-			$(this).html('<i class="fas fa-chevron-down"></i> ' + $(this).attr('data-default-text'));
+			$(this).html('<i class="fas fa-chevron-down"></i>' + $(this).attr('data-default-text'));
 		} else {
 			hidden.slideDown(uiAnimTime);
-			$(this).html('<i class="fas fa-chevron-up"></i> ' + $(this).attr('data-shown-text'));
+			$(this).html('<i class="fas fa-chevron-up"></i>' + $(this).attr('data-shown-text'));
 		}
 	});
 });
@@ -85,7 +85,7 @@ function toast(message, toastTime) {
 }
 
 function generateExpandLink(defaultText, shownText, containerSelector) {
-	return $('<a href="javascript:void(0);"></a>').html('<i class="fas fa-chevron-down"></i> ' + defaultText).addClass('expandLink').attr('data-container-selector', containerSelector).attr('data-default-text', defaultText).attr('data-shown-text', shownText);
+	return $('<a href="javascript:void(0);"></a>').html('<i class="fas fa-chevron-down"></i>' + defaultText).addClass('expandLink').attr('data-container-selector', containerSelector).attr('data-default-text', defaultText).attr('data-shown-text', shownText);
 }
 
 // local storage

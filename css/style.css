@@ -14,7 +14,7 @@ body {
 	body {touch-action: pan-x pan-y;}
 }
 
-header, h1, h2, h3, button, img, .toast, .expandLink {
+header, h1:not(.selectable), h2:not(.selectable), h3:not(.selectable), h4:not(.selectable), h5:not(.selectable), h6:not(.selectable), button, img, .toast, .expandLink {
 	-moz-user-select: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;
@@ -79,6 +79,8 @@ button:not(.roundButton) i {margin-right: 0.5em;}
 }
 
 .hidden {display: none;}
+
+.expandLink i {margin-right: 0.5em;}
 
 table {
 	border-collapse: collapse;
