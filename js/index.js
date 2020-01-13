@@ -469,7 +469,7 @@ function setupDevMenu() {
 	});
 	if (asBoolean(lsGet('fakeData', 'false'))) {
 		// fake data time
-		selectedId = fakeSpreadsheetId;
+		selectedURL = fakeSpreadsheetURL;
 		$('main h1').text('Fake data').css('color', 'red');
 		$('#notCredits').prepend($('<button></button>').attr('id', 'cancelFakeDataButton').text('Stop using fake data'));
 		$('#cancelFakeDataButton').on('click', function(e) {

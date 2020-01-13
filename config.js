@@ -1,10 +1,10 @@
 'use strict';
 
-const version = '1.0.6';
+const version = '1.0.6.1';
 
 const apiKey = window.atob('QUl6YVN5Q2xqcC02c3hrOXFvM21qcnZ6S2dWWm11LUh6WXRnTTFj'); // google api key
-const spreadsheetId = '12UgKkow7LXLHgf5v45EsjuPuf_7COerJ7mnLgWdNCbs';
-const fakeSpreadsheetId = '1i5f7R7_iv4w1zMJkfoi1mLL6cFmvmhq2Cw2aPX8llUQ';
+const spreadsheetURL = window.atob('aHR0cHM6Ly9zaGVldHMuZ29vZ2xlYXBpcy5jb20vdjQvc3ByZWFkc2hlZXRzLzEyVWdLa293N0xYTEhnZjV2NDVFc2p1UHVmXzdDT2VySjdtbkxnV2ROQ2JzL3ZhbHVlczpiYXRjaEdldA==');
+const fakeSpreadsheetURL = window.atob('aHR0cHM6Ly9zaGVldHMuZ29vZ2xlYXBpcy5jb20vdjQvc3ByZWFkc2hlZXRzLzFpNWY3UjdfaXY0dzF6TUprZm9pMW1MTDZjRm12bWhxMkN3MmFQWDhsbFVRL3ZhbHVlczpiYXRjaEdldA==');
 
 const updateTime = 60000; // to update automatically
 const reqTimeout = 10000; // set to 0 for no timeout
