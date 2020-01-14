@@ -167,8 +167,8 @@ $(document).ready(function() {
 		// place update notes
 		if (updateNotes.length > 1) {$('#prevUpdates').empty();}
 		for (let i = 0; i < updateNotes.length; i++) {
-			let el = $('<p></p>');
-			el.text(' – ' + updateNotes[i].text);
+			let el = $('<p></p>').addClass('updateNote');
+			el.html(' – ' + updateNotes[i].text);
 			el.prepend($('<b></b>').text(updateNotes[i].version));
 			if (i == updateNotes.length - 1) {
 				$('#currentUpdate').replaceWith(el);
