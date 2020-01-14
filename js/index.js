@@ -242,7 +242,6 @@ function update() {
 					row.append($('<td></td>').text(placedScores[i].house).addClass('houseCell'));
 					row.append($('<td></td>').append(numberEl(placedScores[i].score, dp)).addClass('scoreCell'));
 					row.children('td').css('background-color', houseColors[placedScores[i].house]); // color it with the house color
-					row.css('color', 'white');
 					visuals.scoreboard.append(row);
 				}
 				// generate events

@@ -177,7 +177,7 @@ body.hasHover a:hover {text-decoration: underline;}
 	
 	button {border-color: rgba(0, 0, 0, 0.3);}
 	
-	button[disabled] {color: gray;}
+	button[disabled] {color: #b8b8b8;}
 	
 	body.hasHover button:not([disabled]):hover, button:focus {background-color: rgba(0, 0, 0, 0.15);}
 	body:not(.cheat) button:not([disabled]):active {background-color: rgba(0, 0, 0, 0.3);}

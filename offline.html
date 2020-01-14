@@ -92,4 +92,20 @@ button[disabled] {color: gray;}
 button:focus {outline: none;} /* for firefox */
 
 button:focus {background-color: rgba(255, 255, 255, 0.15);}
+
+@media only screen and (prefers-color-scheme: light) {
+	body {
+		color: black;
+		background-color: #d7d7d7;
+	}
+	
+	button {border-color: rgba(0, 0, 0, 0.3);}
+	
+	button[disabled] {color: #b8b8b8;}
+	button:focus {background-color: rgba(0, 0, 0, 0.15);}
+	
+	.modal {background-color: #e7e7e7;}
+	
+	h2 {color: #383838;}
+}
 </style>
