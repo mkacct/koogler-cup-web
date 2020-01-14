@@ -35,13 +35,13 @@ function checkEvents(events, prevEvents) {
 // onSuccess(object data), onError(string status, string error)
 function getData(onSuccess, onError) {
 	$.ajax({
+		type: 'get',
 		url: selectedURL,
 		data: {
 			key: apiKey,
 			ranges: ['Main', 'Events']
 		},
 		traditional: true,
-		type: 'get',
 		dataType: 'json',
 		timeout: reqTimeout
 	}).done(function(json) {
