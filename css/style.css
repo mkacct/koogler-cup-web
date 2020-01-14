@@ -185,4 +185,6 @@ body.hasHover a:hover {text-decoration: underline;}
 	.modal {background-color: #e7e7e7;}
 	
 	.toast {background-color: rgba(175, 175, 175, 0.95);}
+	
+	h1, h2, h3, h4, h5, h6, .roundButton {color: #383838;}
 }
