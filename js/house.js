@@ -7,7 +7,7 @@ const houseColors = {
 	'Fulton Creek': 'green',
 	'Houk': '#5050ff',
 	'Lockport': 'purple',
-	'Prospect Hill': 'yellow',
+	'Prospect Hill': '#c9c900',
 	'Ridge': 'red',
 	'Steamtown': '#4b9cd3',
 	'Sugar Grove': 'teal'
