@@ -64,7 +64,7 @@ button[disabled] {color: gray;}
 button:focus {outline: none;} /* for firefox */
 
 body.hasHover button:not([disabled]):hover, button:focus {background-color: rgba(255, 255, 255, 0.15);}
-button:not([disabled]):active {background-color: rgba(255, 255, 255, 0.3) !important;}
+body:not(.cheat) button:not([disabled]):active {background-color: rgba(255, 255, 255, 0.3);}
 
 button:not(.roundButton) i {margin-right: 0.5em;}
 
@@ -165,4 +165,26 @@ body.hasHover a:hover {text-decoration: underline;}
 	main, .modalContent {margin: 0 25%;}
 	header {padding: 0.5em calc(25% + 1em);}
 	.toast {width: calc(50% - 4em);}
+}
+
+@media only screen and (prefers-color-scheme: light) {
+	body {
+		color: black;
+		background-color: #d7d7d7;
+	}
+	
+	header {background-color: rgba(247, 247, 247, 0.95);}
+	
+	button {border-color: rgba(0, 0, 0, 0.3);}
+	
+	button[disabled] {color: #b8b8b8;}
+	
+	body.hasHover button:not([disabled]):hover, button:focus {background-color: rgba(0, 0, 0, 0.15);}
+	body:not(.cheat) button:not([disabled]):active {background-color: rgba(0, 0, 0, 0.3);}
+	
+	.modal {background-color: #e7e7e7;}
+	
+	.toast {background-color: rgba(175, 175, 175, 0.95);}
+	
+	h1, h2, h3, h4, h5, h6, .roundButton {color: #383838;}
 }

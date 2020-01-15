@@ -167,8 +167,8 @@ $(document).ready(function() {
 		// place update notes
 		if (updateNotes.length > 1) {$('#prevUpdates').empty();}
 		for (let i = 0; i < updateNotes.length; i++) {
-			let el = $('<p></p>');
-			el.text(' – ' + updateNotes[i].text);
+			let el = $('<p></p>').addClass('updateNote');
+			el.html(' – ' + updateNotes[i].text);
 			el.prepend($('<b></b>').text(updateNotes[i].version));
 			if (i == updateNotes.length - 1) {
 				$('#currentUpdate').replaceWith(el);
@@ -242,7 +242,6 @@ function update() {
 					row.append($('<td></td>').text(placedScores[i].house).addClass('houseCell'));
 					row.append($('<td></td>').append(numberEl(placedScores[i].score, dp)).addClass('scoreCell'));
 					row.children('td').css('background-color', houseColors[placedScores[i].house]); // color it with the house color
-					if (placedScores[i].house == 'Prospect Hill') {row.css('color', 'black');} // make prospect hill readable
 					visuals.scoreboard.append(row);
 				}
 				// generate events
@@ -458,23 +457,7 @@ function setupDevMenu() {
 			toast('Nonstandard usage marked', 1000);
 		}
 	});
-	$('#fakeDataButton').on('click', function(e) {
-		if (window.confirm('Enable fake data?')) {
-			lsSet('fakeData', 'true');
-			window.location.reload();
-		}
-	});
 	$('#mqButton').on('click', function(e) {
 		alert(window.matchMedia(prompt('Enter media query')).matches);
 	});
-	if (asBoolean(lsGet('fakeData', 'false'))) {
-		// fake data time
-		selectedURL = fakeSpreadsheetURL;
-		$('main h1').text('Fake data').css('color', 'red');
-		$('#notCredits').prepend($('<button></button>').attr('id', 'cancelFakeDataButton').text('Stop using fake data'));
-		$('#cancelFakeDataButton').on('click', function(e) {
-			lsSet('fakeData', 'false');
-			window.location.reload();
-		});
-	}
 }
