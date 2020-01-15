@@ -1,6 +1,6 @@
 'use strict';
 
-const version = '1.0.6.2';
+const version = '1.1';
 
 const apiURL = window.atob('aHR0cHM6Ly9zYW0uam9zaGllcG9vLmdx');
 
@@ -15,5 +15,9 @@ const updateNotes = [
 	{
 		version: '1.0',
 		text: 'Released'
+	},
+	{
+		version: '1.1',
+		text: 'This update includes the following improvements:<ul><li>Stability issue has been addressed</li><li>Light mode is now available on compatible devices/browsers</li><li>Additional minor fixes</li></ul>'
 	}
 ];
