@@ -1,5 +1,6 @@
 'use strict';
 
+let useFakeData = false;
 const houses = ['Fairview', 'Fulton Creek', 'Houk', 'Lockport', 'Prospect Hill', 'Ridge', 'Steamtown', 'Sugar Grove'];
 const houseColors = {
 	'Fairview': 'gray',
@@ -35,7 +36,7 @@ function checkEvents(events, prevEvents) {
 function getData(onSuccess, onError) {
 	$.ajax({
 		type: 'get',
-		url: apiURL,
+		url: apiURL + (useFakeData ? '?fakeData' : ''),
 		dataType: 'json',
 		timeout: reqTimeout
 	}).done(function(json) {

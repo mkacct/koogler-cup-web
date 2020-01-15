@@ -142,6 +142,7 @@ body.hasHover a:hover {text-decoration: underline;}
 	z-index: 4;
 	text-align: center;
 	background-color: rgba(80, 80, 80, 0.95);
+	color: white;
 	border-radius: 1em;
 }
 
@@ -183,8 +184,6 @@ body.hasHover a:hover {text-decoration: underline;}
 	body:not(.cheat) button:not([disabled]):active {background-color: rgba(0, 0, 0, 0.3);}
 	
 	.modal {background-color: #e7e7e7;}
-	
-	.toast {background-color: rgba(175, 175, 175, 0.95);}
 	
 	h1, h2, h3, h4, h5, h6, .roundButton {color: #383838;}
 }

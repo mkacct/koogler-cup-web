@@ -457,7 +457,23 @@ function setupDevMenu() {
 			toast('Nonstandard usage marked', 1000);
 		}
 	});
+	$('#fakeDataButton').on('click', function(e) {
+		if (window.confirm('Enable fake data?')) {
+			lsSet('fakeData', 'true');
+			window.location.reload();
+		}
+	});
 	$('#mqButton').on('click', function(e) {
 		alert(window.matchMedia(prompt('Enter media query')).matches);
 	});
+	if (asBoolean(lsGet('fakeData', 'false'))) {
+		// fake data time
+		useFakeData = true;
+		$('main h1').text('Fake data').css('color', 'red');
+		$('#notCredits').prepend($('<button></button>').attr('id', 'cancelFakeDataButton').text('Stop using fake data'));
+		$('#cancelFakeDataButton').on('click', function(e) {
+			lsSet('fakeData', 'false');
+			window.location.reload();
+		});
+	}
 }
