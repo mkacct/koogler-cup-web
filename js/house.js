@@ -1,6 +1,5 @@
 'use strict';
 
-let selectedURL = spreadsheetURL;
 const houses = ['Fairview', 'Fulton Creek', 'Houk', 'Lockport', 'Prospect Hill', 'Ridge', 'Steamtown', 'Sugar Grove'];
 const houseColors = {
 	'Fairview': 'gray',
@@ -36,12 +35,7 @@ function checkEvents(events, prevEvents) {
 function getData(onSuccess, onError) {
 	$.ajax({
 		type: 'get',
-		url: selectedURL,
-		data: {
-			key: apiKey,
-			ranges: ['Main', 'Events']
-		},
-		traditional: true,
+		url: apiURL,
 		dataType: 'json',
 		timeout: reqTimeout
 	}).done(function(json) {
