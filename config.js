@@ -1,6 +1,6 @@
 'use strict';
 
-const version = '1.1.2.2';
+const version = '1.1.2.3';
 
 const apiURL = window.atob('aHR0cHM6Ly9zYW0uam9zaGllcG9vLmdx');
 

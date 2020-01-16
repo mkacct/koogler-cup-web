@@ -41,7 +41,7 @@ $(document).ready(function() {
 	
 	// add events
 	// android back button stuff
-	if (mqStandalone.matches && isAndroid) {
+	if (mqStandalone.matches && (navigator.userAgent.toLowerCase().indexOf('android') > -1 || asBoolean(lsGet('backButtonNav', 'false')))) {
 		if (window.history.scrollRestoration) {window.history.scrollRestoration = 'manual';}
 		
 		// to do history stuff (for android back button)
@@ -471,6 +471,15 @@ function setupDevMenu() {
 	});
 	$('#mqButton').on('click', function(e) {
 		alert(window.matchMedia(prompt('Enter media query')).matches);
+	});
+	$('#backButtonNavButton').on('click', function(e) {
+		if (asBoolean(lsGet('backButtonNav', 'false'))) {
+			lsSet('backButtonNav', 'false');
+			toast('Back button nav disabled', 1000);
+		} else {
+			lsSet('backButtonNav', 'true');
+			toast('Back button nav enabled', 1000);
+		}
 	});
 	if (asBoolean(lsGet('fakeData', 'false'))) {
 		// fake data time

@@ -1,6 +1,5 @@
 'use strict';
 
-const isAndroid = navigator.userAgent.toLowerCase().indexOf('android') > -1;
 const mqStandalone = window.matchMedia('(display-mode: standalone)');
 
 $(document).ready(function() {
