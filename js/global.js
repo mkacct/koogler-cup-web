@@ -146,7 +146,7 @@ function asBoolean(string) {
 }
 
 function logUsage(type, text) {
-	if (window.location.protocol != 'file:' && !asBoolean(lsGet('nonstandardUsage', 'false'))) {
+	if (window.location.protocol != 'file:' && (!asBoolean(lsGet('nonstandardUsage', 'false')) || type == 'Feedback')) {
 		let userAgent = navigator.userAgent;
 		let viewportWidth = window.innerWidth;
 		let displayType;
