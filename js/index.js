@@ -144,7 +144,13 @@ $(document).ready(function() {
 	});
 	// to open the feedback page
 	$('#feedbackButton').on('click', function(e) {
-		window.open('https://docs.google.com/forms/d/e/1FAIpQLSc9bxC4iYVQVn-1QSceD_wdWn7YqwiLiN7-n3KNRvZ8pl8rxQ/viewform?usp=sf_link', '_blank');
+		let feedbackId = '';
+		for (let i = 0; i < 6; i++) {
+			feedbackId += String.fromCharCode(randomInt(48, 57));
+		}
+		$('#feedbackId').text(feedbackId);
+		logUsage('Feedback', feedbackId.toString());
+		openModal('#feedbackModal');
 	});
 	// to show and hide the credits
 	$('#creditsButton').on('click', function(e) {
