@@ -1,7 +1,5 @@
 'use strict';
 
-const mqStandalone = window.matchMedia('(display-mode: standalone)');
-
 $(document).ready(function() {
 	// tell desktop from mobile for hover
 	watchForHover();
@@ -52,19 +50,22 @@ function openModal(selector, callback) {
 
 function openModalInternal(selector, callback) {
 	$('#modalShade').fadeIn(uiAnimTime);
-	$(selector).css('opacity', 0).slideDown(uiAnimTime).animate({opacity: 1}, {
-		queue: false,
-		duration: uiAnimTime
-	});
+	if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+		$(selector).css('opacity', 0).slideDown(uiAnimTime).animate({opacity: 1}, {queue: false, duration: uiAnimTime});
+	} else {
+		$(selector).css('opacity', 0).show().animate({opacity: 1}, {queue: false, duration: uiAnimTime});
+	}
 	if (typeof callback == 'function') {setTimeout(callback, uiAnimTime);}
 }
 
 function closeModal(callback, noUndim) {
 	if (!noUndim) {$('#modalShade:visible').fadeOut(uiAnimTime);}
-	$('.modal:visible').slideUp(uiAnimTime).animate({opacity: 0}, {
-		queue: false,
-		duration: uiAnimTime
-	});
+	if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+		$('.modal:visible').slideUp(uiAnimTime).animate({opacity: 0}, {queue: false, duration: uiAnimTime});
+	} else {
+		$('.modal:visible').animate({opacity: 0}, {queue: false, duration: uiAnimTime});
+		setTimeout(function() {$('.modal:visible').hide()}, uiAnimTime);
+	}
 	if (typeof callback == 'function') {setTimeout(callback, uiAnimTime);}
 }
 
@@ -156,7 +157,7 @@ function logUsage(type, text) {
 		} else {
 			displayType = 'Small';
 		}
-		let pwaStatus = mqStandalone.matches ? 'Yes' : 'No';
+		let pwaStatus = window.matchMedia('(display-mode: standalone)').matches ? 'Yes' : 'No';
 		$.ajax({
 			type: 'post',
 			url: window.atob('aHR0cHM6Ly9tYWtlci5pZnR0dC5jb20vdHJpZ2dlci9rY3NfbG9nL3dpdGgva2V5L2NhYlAwd0EydlM2WVRERGtadkxrR0g='),

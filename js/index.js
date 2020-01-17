@@ -41,7 +41,7 @@ $(document).ready(function() {
 	
 	// add events
 	// android back button stuff
-	if (mqStandalone.matches && (navigator.userAgent.toLowerCase().indexOf('android') > -1 || asBoolean(lsGet('backButtonNav', 'false')))) {
+	if (window.matchMedia('(display-mode: standalone)').matches && (navigator.userAgent.toLowerCase().indexOf('android') > -1 || asBoolean(lsGet('backButtonNav', 'false')))) {
 		if (window.history.scrollRestoration) {window.history.scrollRestoration = 'manual';}
 		
 		// to do history stuff (for android back button)
@@ -326,7 +326,7 @@ function updateVisuals(obj) {
 	} else {
 		setUpdateButton('complete');
 	}
-	setTimeout(function() {setUpdateButton('off');}, 5000);
+	setTimeout(function() {setUpdateButton('off');}, 1500);
 	// display els
 	if (obj.showEls) {
 		prevShowEls = true;
