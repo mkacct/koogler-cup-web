@@ -71,7 +71,11 @@ $(document).ready(function() {
 	}
 	// to scroll to top by clicking the logo
 	$('#logoLink').on('click', function(e) {
-		$('html, body').animate({scrollTop: 0}, uiAnimTime);
+		if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+			$('html, body').animate({scrollTop: 0}, uiAnimTime);
+		} else {
+			$('html, body').scrollTop(0);
+		}
 	});
 	// to reload by button
 	$('#updateButton').on('click', function(e) {
@@ -197,6 +201,8 @@ $(document).ready(function() {
 	logUsage('Open', 'index');
 	
 	setupDevMenu();
+	
+	$('#menuButton').attr('disabled', false);
 	
 	// start getting data
 	$('#noContentDesc').html('Loading…');
