@@ -14,12 +14,14 @@ window.addEventListener('beforeinstallprompt', function(e) {
 	$('#installButton').parent().show();
 });
 
-window.addEventListener('appinstalled', function(e) {hideInstallOption(true)});
+window.addEventListener('appinstalled', function(e) {
+	hideInstallOption(true);
+	logUsage('Feature', 'PWA install');
+});
 
 function hideInstallOption(installed) {
 	if (installed) {
 		$('#installButton').parent().hide();
-		logUsage('Feature', 'PWA install');
 	}
 	if ($('#installModal:visible').length > 0) {
 		closeModal(function() {hideInstallOption2(installed);});
