@@ -1,10 +1,12 @@
 'use strict';
 
+const lsAppId = 'kcs';
+
 $(document).ready(function() {
 	// tell desktop from mobile for hover
 	watchForHover();
 	// never keep buttons focused
-	$('button').on('click', function(e) {
+	$('body').on('click', 'button', function(e) {
 		$(this).blur();
 	});
 	// three ways to close a modal
@@ -92,7 +94,7 @@ function generateExpandLink(defaultText, shownText, containerSelector) {
 
 function lsGet(key, fallback) {
 	if (window.localStorage) {
-		let item = localStorage.getItem('kcs_' + key);
+		let item = localStorage.getItem(lsAppId + '_' + key);
 		if (typeof item == 'string') {
 			return item;
 		} else {
@@ -106,7 +108,7 @@ function lsGet(key, fallback) {
 
 function lsSet(key, value) {
 	if (window.localStorage) {
-		localStorage.setItem('kcs_' + key, value.toString());
+		localStorage.setItem(lsAppId + '_' + key, value.toString());
 	} else {
 		console.log('lsSet failed because localStorage is not available');
 	}
@@ -137,35 +139,6 @@ function splitVer(ver) {
 	return verArr;
 }
 
-function randomInt(min, max) {
-	return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+function randomInt(min, max) {return Math.floor(Math.random() * (max - min + 1)) + min;}
 
-function asBoolean(string) {
-	return string.toLowerCase() == 'true';
-}
-
-function logUsage(type, text) {
-	if (window.location.protocol != 'file:' && (!asBoolean(lsGet('nonstandardUsage', 'false')) || type == 'Feedback')) {
-		let userAgent = navigator.userAgent;
-		let viewportWidth = window.innerWidth;
-		let displayType;
-		if (viewportWidth >= 1024) {
-			displayType = 'Large';
-		} else if (viewportWidth >= 481) {
-			displayType = 'Medium';
-		} else {
-			displayType = 'Small';
-		}
-		let pwaStatus = window.matchMedia('(display-mode: standalone)').matches ? 'Yes' : 'No';
-		$.ajax({
-			type: 'post',
-			url: window.atob('aHR0cHM6Ly9tYWtlci5pZnR0dC5jb20vdHJpZ2dlci9rY3NfbG9nL3dpdGgva2V5L2NhYlAwd0EydlM2WVRERGtadkxrR0g='),
-			data: {
-				value1: type + ',' + displayType + ',' + pwaStatus + ',' + version,
-				value2: text,
-				value3: userAgent
-			}
-		});
-	}
-}
+function asBoolean(string) {return string.toLowerCase() == 'true';}

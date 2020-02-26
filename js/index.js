@@ -330,7 +330,7 @@ function updateVisuals(obj) {
 	// status
 	if (obj.status == 'error') {
 		setUpdateButton('error');
-		toast('<i class="fas fa-exclamation-triangle"></i> ' + obj.errorText, 5000);
+		toast('<i class="fas fa-exclamation-triangle"></i>' + obj.errorText, 5000);
 	} else {
 		setUpdateButton('complete');
 	}
@@ -497,6 +497,31 @@ function setupDevMenu() {
 		$('#cancelFakeDataButton').on('click', function(e) {
 			lsSet('fakeData', 'false');
 			window.location.reload();
+		});
+	}
+}
+
+function logUsage(type, text) {
+	if (window.location.protocol != 'file:' && (!asBoolean(lsGet('nonstandardUsage', 'false')) || type == 'Feedback')) {
+		let userAgent = navigator.userAgent;
+		let viewportWidth = window.innerWidth;
+		let displayType;
+		if (viewportWidth >= 1024) {
+			displayType = 'Large';
+		} else if (viewportWidth >= 481) {
+			displayType = 'Medium';
+		} else {
+			displayType = 'Small';
+		}
+		let pwaStatus = window.matchMedia('(display-mode: standalone)').matches ? 'Yes' : 'No';
+		$.ajax({
+			type: 'post',
+			url: window.atob('aHR0cHM6Ly9tYWtlci5pZnR0dC5jb20vdHJpZ2dlci9rY3NfbG9nL3dpdGgva2V5L2NhYlAwd0EydlM2WVRERGtadkxrR0g='),
+			data: {
+				value1: type + ',' + displayType + ',' + pwaStatus + ',' + version,
+				value2: text,
+				value3: userAgent
+			}
 		});
 	}
 }
