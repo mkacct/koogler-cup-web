@@ -153,18 +153,19 @@ body.hasHover a:hover {text-decoration: underline;}
 .buttonRow button {margin: 0 1em 1em 0;}
 .buttonRow button:last-child {margin-right: 0;}
 
-input[type=text], textarea {
+input:not([type=checkbox]):not([type=color]):not([type=file]):not([type=radio]):not([type=range]), textarea {
 	color: inherit;
 	outline: none;
 	min-width: 0;
 	transition: border-color 0.25s;
 }
 
-input[type=text] {
+input:not([type=checkbox]):not([type=color]):not([type=file]):not([type=radio]):not([type=range]) {
 	padding: 0.5em 0;
 	background-color: inherit;
 	border: none;
 	border-bottom: 1px solid white;
+	border-radius: 0;
 }
 
 textarea {
@@ -175,7 +176,7 @@ textarea {
 }
 
 textarea[readonly] {background-color: inherit;}
-input[type=text]:focus, textarea:focus {border-color: #2196f3;}
+input:not([type=checkbox]):not([type=color]):not([type=file]):not([type=radio]):not([type=range]):focus, textarea:focus {border-color: #2196f3;}
 
 @media screen and (min-width: 481px) {
 	tr:first-child td:first-child {border-top-left-radius: 1em;}
