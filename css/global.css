@@ -214,6 +214,6 @@ input:not([type=checkbox]):not([type=color]):not([type=file]):not([type=radio]):
 	
 	h1, h2, h3, h4, h5, h6, .roundButton {color: #383838;}
 	
-	input[type=text], textarea {border-color: #383838;}
+	input:not([type=checkbox]):not([type=color]):not([type=file]):not([type=radio]):not([type=range]), textarea {border-color: #383838;}
 	textarea {background-color: #e7e7e7;}
 }
