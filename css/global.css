@@ -5,6 +5,7 @@ body {
 	background-color: #181818;
 	color: white;
 	touch-action: manipulation;
+	overflow-x: hidden;
 	-webkit-tap-highlight-color: transparent;
 	-webkit-touch-callout: none;
 	overscroll-behavior: contain;
@@ -121,7 +122,7 @@ body.hasHover a:hover {text-decoration: underline;}
 	z-index: 3;
 	background-color: #282828;
 	max-height: 100%;
-	overflow: auto;
+	overflow-y: auto;
 	overscroll-behavior: contain;
 }
 
