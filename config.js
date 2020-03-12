@@ -1,8 +1,10 @@
 'use strict';
 
-const version = '1.1.5.6';
+const version = '1.1.5.7';
 
 const apiURL = window.atob('aHR0cHM6Ly9zYW0uam9zaGllcG9vLmdx');
+
+const lsAppId = 'kcs';
 
 const updateTime = 60000; // to update automatically
 const reqTimeout = 10000; // set to 0 for no timeout

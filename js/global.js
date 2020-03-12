@@ -1,7 +1,5 @@
 'use strict';
 
-const lsAppId = 'kcs';
-
 $(document).ready(function() {
 	// tell desktop from mobile for hover
 	watchForHover();
