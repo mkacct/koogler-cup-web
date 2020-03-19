@@ -15,7 +15,7 @@ $(document).ready(function() {
 		closeModal();
 	});
 	$(document).on('keydown', function(e) {
-		if (e.which == 27) {closeModal();}
+		if (e.key == 'Escape') {closeModal();}
 	});
 	// close toast on click
 	$('body').on('click', '.toast', function(e) {
