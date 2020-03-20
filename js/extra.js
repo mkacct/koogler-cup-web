@@ -1,6 +1,6 @@
 'use strict';
 
-let kci = 0;
+let inputHistory = [];
 
 $('document').ready(function() {
 	let date = new Date();
@@ -9,14 +9,20 @@ $('document').ready(function() {
 	}
 	
 	$('body').on('keydown', function(e) {
-		if (kci == 9 && (e.key == 'a' || e.key == 'A')) {
-			toast('video games,', 5000);
-			kci = 0;
-		} else if (((kci == 0 || kci == 1) && e.key == 'ArrowUp') || ((kci == 2 || kci == 3) && e.key == 'ArrowDown') || ((kci == 4 || kci == 6) && e.key == 'ArrowLeft') || ((kci == 5 || kci == 7) && e.key == 'ArrowRight') || (kci == 8 && (e.key == 'b' || e.key == 'B'))) {
-			kci++;
-		} else {
-			kci = 0;
-		}
+		inputHistory.push(e.key.toLowerCase());
+		if (inputHistory.length > 10) {inputHistory.splice(0, 1);}
+		if (compareArrays(inputHistory, ['arrowup', 'arrowup', 'arrowdown', 'arrowdown', 'arrowleft', 'arrowright', 'arrowleft', 'arrowright', 'b', 'a'])) {toast('video games,', 5000);}
 	});
-	$('body').on('click', function(e) {kci = 0;});
+	$('body').on('click', function(e) {
+		inputHistory.push('click');
+		if (inputHistory.length > 10) {inputHistory.splice(0, 1);}
+	});
 });
+
+function compareArrays(a, b) { // of primatives that is
+	if (a.length != b.length) {return false;}
+	for (let i = 0; i < a.length; i++) {
+		if (a[i] != b[i]) {return false;}
+	}
+	return true;
+}
