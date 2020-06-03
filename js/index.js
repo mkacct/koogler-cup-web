@@ -16,7 +16,6 @@ window.addEventListener('beforeinstallprompt', function(e) {
 
 window.addEventListener('appinstalled', function(e) {
 	hideInstallOption(true);
-	logUsage('Feature', 'PWA install');
 });
 
 function hideInstallOption(installed) {
@@ -135,7 +134,6 @@ $(document).ready(function() {
 					} else {
 						toast('The event was since removed', 3000);
 					}
-					logUsage('Feature', 'Alphabetical list');
 				});
 				$('#alphaList').append($('<li></li>').append(eventA));
 			}
@@ -150,13 +148,7 @@ $(document).ready(function() {
 	});
 	// to open the feedback page
 	$('#feedbackButton').on('click', function(e) {
-		let feedbackId = '';
-		for (let i = 0; i < 6; i++) {
-			feedbackId += String.fromCharCode(randomInt(48, 57));
-		}
-		$('#feedbackId').text(feedbackId);
-		logUsage('Feedback', feedbackId.toString());
-		openModal('#feedbackModal');
+		window.open('https://docs.google.com/forms/d/e/1FAIpQLSc9bxC4iYVQVn-1QSceD_wdWn7YqwiLiN7-n3KNRvZ8pl8rxQ/viewform?usp=sf_link', '_blank');
 	});
 	// to show and hide the credits
 	$('#creditsButton').on('click', function(e) {
@@ -168,10 +160,6 @@ $(document).ready(function() {
 		$('#credits').slideUp(uiAnimTime);
 		$('#notCredits').slideDown(uiAnimTime);
 		$('#creditsBackButton').fadeOut(uiAnimTime);
-	});
-	// to log use of the twitter link
-	$('#twitterLink').on('click', function(e) {
-		logUsage('Feature', 'Twitter link')
 	});
 	
 	// update notes stuff
@@ -199,8 +187,6 @@ $(document).ready(function() {
 	} else {
 		lsSet('prevUN', '0'); // start at 0 so that they're sure to get the first update note
 	}
-	
-	logUsage('Open', 'index');
 	
 	setupDevMenu();
 	
@@ -455,7 +441,6 @@ function setupDevMenu() {
 			devClickCount++;
 			if (devClickCount >= 4) {
 				devClickCount = 0;
-				logUsage('Feature', 'Dev menu');
 				if (window.confirm('Open developer menu?')) {openModal('#devModal');}
 			}
 		} else {
@@ -497,31 +482,6 @@ function setupDevMenu() {
 		$('#cancelFakeDataButton').on('click', function(e) {
 			lsSet('fakeData', 'false');
 			window.location.reload();
-		});
-	}
-}
-
-function logUsage(type, text) {
-	if (window.location.protocol != 'file:' && (!asBoolean(lsGet('nonstandardUsage', 'false')) || type == 'Feedback')) {
-		let userAgent = navigator.userAgent;
-		let viewportWidth = window.innerWidth;
-		let displayType;
-		if (viewportWidth >= 1024) {
-			displayType = 'Large';
-		} else if (viewportWidth >= 481) {
-			displayType = 'Medium';
-		} else {
-			displayType = 'Small';
-		}
-		let pwaStatus = window.matchMedia('(display-mode: standalone)').matches ? 'Yes' : 'No';
-		$.ajax({
-			type: 'post',
-			url: window.atob('aHR0cHM6Ly9tYWtlci5pZnR0dC5jb20vdHJpZ2dlci9rY3NfbG9nL3dpdGgva2V5L2NhYlAwd0EydlM2WVRERGtadkxrR0g='),
-			data: {
-				value1: type + ',' + displayType + ',' + pwaStatus + ',' + version,
-				value2: text,
-				value3: userAgent
-			}
 		});
 	}
 }

@@ -1,6 +1,6 @@
 body {overflow-y: scroll;}
 
-#noContentDesc, table, #notCredits, #installModal, #feedbackModal p {
+#noContentDesc, table, #notCredits, #installModal p {
 	-moz-user-select: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;
