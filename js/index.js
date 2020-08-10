@@ -42,7 +42,7 @@ $(document).ready(function() {
 	
 	// add events
 	// android back button stuff
-	if (window.matchMedia('(display-mode: standalone)').matches && (navigator.userAgent.toLowerCase().indexOf('android') > -1 || asBoolean(lsGet('backButtonNav', 'false')))) {
+	if (window.matchMedia('(display-mode: standalone)').matches && (navigator.userAgent.toLowerCase().indexOf('android') > -1)) {
 		if (window.history.scrollRestoration) {window.history.scrollRestoration = 'manual';}
 		
 		// to do history stuff (for android back button)
@@ -187,8 +187,6 @@ $(document).ready(function() {
 	} else {
 		lsSet('prevUN', '0'); // start at 0 so that they're sure to get the first update note
 	}
-	
-	setupDevMenu();
 	
 	$('#menuButton').attr('disabled', false);
 	
@@ -432,56 +430,4 @@ function numberEl(num, dp) {
 	for (let i = 0; i < dp - initialDP; i++) {hiddenText.append('0');}
 	el.append(hiddenText);
 	return el;
-}
-
-function setupDevMenu() {
-	$('#devUA').text(navigator.userAgent);
-	$('body').on('click', function(e) {
-		if ($(e.target).is($('#cred'))) {
-			devClickCount++;
-			if (devClickCount >= 4) {
-				devClickCount = 0;
-				if (window.confirm('Open developer menu?')) {openModal('#devModal');}
-			}
-		} else {
-			devClickCount = 0;
-		}
-	});
-	$('#nonstandardUsageButton').on('click', function(e) {
-		if (asBoolean(lsGet('nonstandardUsage', 'false'))) {
-			lsSet('nonstandardUsage', 'false');
-			toast('Nonstandard usage unmarked', 1000);
-		} else {
-			lsSet('nonstandardUsage', 'true');
-			toast('Nonstandard usage marked', 1000);
-		}
-	});
-	$('#fakeDataButton').on('click', function(e) {
-		if (window.confirm('Enable fake data?')) {
-			lsSet('fakeData', 'true');
-			window.location.reload();
-		}
-	});
-	$('#mqButton').on('click', function(e) {
-		alert(window.matchMedia(prompt('Enter media query')).matches);
-	});
-	$('#backButtonNavButton').on('click', function(e) {
-		if (asBoolean(lsGet('backButtonNav', 'false'))) {
-			lsSet('backButtonNav', 'false');
-			toast('Back button nav disabled', 1000);
-		} else {
-			lsSet('backButtonNav', 'true');
-			toast('Back button nav enabled', 1000);
-		}
-	});
-	if (asBoolean(lsGet('fakeData', 'false'))) {
-		// fake data time
-		useFakeData = true;
-		$('main h1').text('Fake data').css('color', 'red');
-		$('#notCredits').prepend($('<button></button>').attr('id', 'cancelFakeDataButton').text('Stop using fake data'));
-		$('#cancelFakeDataButton').on('click', function(e) {
-			lsSet('fakeData', 'false');
-			window.location.reload();
-		});
-	}
 }
